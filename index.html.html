@@ -1,0 +1,408 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>ClearPipe</title>
+<style>
+  :root{
+    color-scheme:light;
+    --paper:#f4f4f2;--surface:#fff;--surface-soft:#fafbfa;--ink:#22252a;--muted:#6b7280;
+    --quiet:#9aa0aa;--line:#dde1e6;--green:#2f5d40;--green-bg:#eef5f0;--green-line:#a9c9b3;
+    --amber:#6b4a17;--amber-bg:#fdf3e3;--amber-line:#e0b876;--blue:#28457a;--blue-bg:#eef2fb;
+    --blue-line:#a9c0e0;--violet:#3a3160;--violet-bg:#f3f1fb;--violet-line:#c9bce8;
+    --danger:#7a3418;--danger-bg:#fbeee9;--danger-line:#d98a6c;--shadow:0 1px 2px rgba(20,27,38,.04)
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--paper);color:var(--ink);font-family:-apple-system,"Segoe UI",Helvetica,Arial,sans-serif;line-height:1.45}
+  button,input,textarea,select{font:inherit}
+  .shell{max-width:1180px;margin:0 auto;padding:26px 22px 72px}
+  .topbar{display:flex;justify-content:space-between;gap:20px;align-items:flex-end;margin-bottom:8px}
+  .brand{font-size:21px;font-weight:720;letter-spacing:-.02em}
+  .deal{font-size:12.5px;color:var(--muted);margin-top:2px}
+  .proto{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--green);font-weight:700;text-align:right}
+  .note{background:var(--green-bg);border:1px solid var(--green-line);color:var(--green);font-size:12.5px;padding:9px 14px;border-radius:7px;margin:14px 0 14px}
+
+  .tabs{display:flex;gap:6px;border-bottom:1px solid var(--line);margin-bottom:18px;position:sticky;top:env(safe-area-inset-top, 0px);background:rgba(244,244,242,.97);z-index:30;padding-top:6px}
+  .tab{border:0;background:none;padding:11px 18px;font-size:14px;font-weight:650;color:var(--muted);cursor:pointer;border-bottom:3px solid transparent;margin-bottom:-1px}
+  .tab[aria-selected="true"]{color:var(--green);border-bottom-color:var(--green)}
+  .tab:focus-visible,.btn:focus-visible,.reply:focus-visible{outline:3px solid rgba(91,140,110,.35);outline-offset:2px}
+
+  .btn{border:1px solid #cfd3d9;background:#fafafa;color:#3a3f47;border-radius:6px;padding:7px 13px;font-size:12.5px;cursor:pointer}
+  .btn.primary{background:var(--ink);color:#fff;border-color:var(--ink)}
+  .btn[disabled]{opacity:.4;cursor:default}
+  .stepbar{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:14px;font-size:12.5px;color:var(--muted)}
+  .stepbar .count{font-weight:700;color:var(--ink)}
+  .dots{display:flex;gap:4px}
+  .dots i{width:12px;height:5px;border-radius:3px;background:#dfe3e7;display:block}
+  .dots i.on{background:#5b8c6e}
+
+  /* ---------- REP TAB ---------- */
+  .rep-layout{display:grid;grid-template-columns:minmax(0,1fr) 400px minmax(0,1fr);gap:26px;align-items:start}
+  .side-note{font-size:12.5px;color:var(--muted);padding-top:34px}
+  .side-note h2{font-size:13px;text-transform:uppercase;letter-spacing:.05em;color:#7c838d;margin:0 0 8px}
+  .side-note p{margin:0 0 10px}
+  .side-note .tip{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:11px 13px;box-shadow:var(--shadow)}
+  .phone{background:#22252a;border-radius:38px;padding:11px;box-shadow:0 8px 30px rgba(20,27,38,.18);width:100%;max-width:400px;margin:0 auto}
+  .screen{background:var(--paper);border-radius:28px;height:min(700px,calc(100vh - 340px));min-height:520px;display:flex;flex-direction:column;overflow:hidden}
+  .phone-head{background:var(--surface);border-bottom:1px solid var(--line);padding:13px 16px 11px;display:flex;justify-content:space-between;align-items:center}
+  .phone-head .who{font-weight:720;font-size:15px}
+  .phone-head .sub{font-size:11px;color:var(--muted)}
+  .lockpill{display:inline-flex;align-items:center;gap:5px;font-size:10.5px;color:var(--green);background:var(--green-bg);border:1px solid var(--green-line);border-radius:12px;padding:3px 9px;font-weight:650}
+  .lockpill svg{width:11px;height:11px}
+  .chat{flex:1;overflow-y:auto;padding:14px 13px 6px;display:flex;flex-direction:column;gap:9px;scroll-behavior:smooth}
+  .msg{max-width:86%;padding:10px 13px;border-radius:15px;font-size:14px;line-height:1.5;animation:pop .22s ease-out}
+  .msg.cp{background:var(--surface);border:1px solid var(--line);align-self:flex-start;border-bottom-left-radius:5px}
+  .msg.rep{background:var(--green);color:#fff;align-self:flex-end;border-bottom-right-radius:5px}
+  .msg.guess{background:var(--violet-bg);border:1px solid var(--violet-line);color:#2b2450}
+  .tag{display:inline-block;font-size:10px;text-transform:uppercase;letter-spacing:.05em;font-weight:700;color:var(--violet);background:#fff;border:1px solid var(--violet-line);border-radius:4px;padding:1px 6px;margin-bottom:6px}
+  .voice{display:flex;align-items:center;gap:9px}
+  .voice .play{width:26px;height:26px;border-radius:50%;background:#fff;color:var(--green);display:grid;place-items:center;flex:none}
+  .voice .play svg{width:11px;height:11px}
+  .wave{display:flex;align-items:center;gap:2px;height:22px}
+  .wave i{display:block;width:3px;background:rgba(255,255,255,.85);border-radius:2px}
+  .voice .len{font-size:11.5px;opacity:.9}
+  .transcript{font-size:12px;margin-top:8px;padding-top:8px;border-top:1px solid rgba(255,255,255,.3);opacity:.95}
+  .transcript b{font-weight:700}
+  .divider{align-self:center;font-size:11px;color:#7c838d;background:#e9ebee;border-radius:11px;padding:3px 12px;margin:6px 0}
+  .typing{align-self:flex-start;background:var(--surface);border:1px solid var(--line);border-radius:15px;border-bottom-left-radius:5px;padding:11px 14px;display:flex;gap:4px}
+  .typing i{width:6px;height:6px;border-radius:50%;background:#b4bac2;animation:blink 1s infinite}
+  .typing i:nth-child(2){animation-delay:.15s}.typing i:nth-child(3){animation-delay:.3s}
+  @keyframes blink{0%,80%,100%{opacity:.3}40%{opacity:1}}
+  @keyframes pop{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:none}}
+  @media (prefers-reduced-motion:reduce){.msg{animation:none}.typing i{animation:none}}
+  .card{align-self:stretch;background:#f7eddb;border:1px solid #dec89f;border-radius:12px;padding:13px 14px;font-size:13.2px;animation:pop .22s ease-out}
+  .card h3{font-size:12px;text-transform:uppercase;letter-spacing:.05em;color:#7e6d53;margin:0 0 8px}
+  .card .row{margin:0 0 8px}
+  .card .row b{display:block;font-size:12px;color:#5d4d33;margin-bottom:2px}
+  .card ul{margin:0;padding-left:18px}
+  .card li{margin:1px 0}
+  .card details{margin-top:9px;border-top:1px solid #ddc9a5;padding-top:8px}
+  .card summary{cursor:pointer;font-weight:650;font-size:12.5px}
+  .card dl{margin:8px 0 0}
+  .card dt{font-weight:650;font-size:12.5px;margin-top:7px}
+  .card dd{margin:1px 0 0;color:#5b5343}
+  .composer{border-top:1px solid var(--line);background:var(--surface);padding:9px 11px 11px}
+  .replies{display:flex;flex-direction:column;gap:6px;margin-bottom:8px}
+  .replies .hint{font-size:10.5px;color:var(--quiet);text-transform:uppercase;letter-spacing:.05em}
+  .reply{border:1px solid var(--green-line);background:var(--green-bg);color:var(--green);border-radius:16px;padding:8px 13px;font-size:13px;cursor:pointer;text-align:left;display:flex;align-items:center;gap:8px}
+  .reply:hover{background:#e3efe7}
+  .reply svg{width:14px;height:14px;flex:none}
+  .inputbar{display:flex;align-items:center;gap:8px}
+  .inputbar .fake{flex:1;border:1px solid #d5d9df;background:#fafafa;border-radius:18px;padding:8px 13px;font-size:13px;color:var(--quiet)}
+  .mic{width:34px;height:34px;border-radius:50%;border:1px solid var(--green-line);background:var(--green-bg);color:var(--green);display:grid;place-items:center;flex:none}
+  .mic svg{width:16px;height:16px}
+  .endnote{font-size:12px;color:var(--muted);text-align:center;padding:2px 6px 6px}
+
+
+  /* ---------- WEB LAYOUT ---------- */
+  .rep-web{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:22px;align-items:start}
+  .webchat{background:var(--paper);border:1px solid var(--line);border-radius:14px;height:min(740px,calc(100vh - 290px));min-height:560px;display:flex;flex-direction:column;overflow:hidden;box-shadow:var(--shadow)}
+  .webchat .msg{max-width:78%}
+  .webchat .chat{padding:16px 18px 8px}
+  .webchat .phone-head{padding:14px 18px 12px}
+  .webchat .composer{padding:11px 16px 14px}
+  .picpanel{background:var(--surface);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);position:sticky;top:64px;max-height:calc(100vh - 100px);overflow-y:auto}
+  .pichead{display:flex;justify-content:space-between;align-items:center;padding:14px 18px 10px;border-bottom:1px solid var(--line)}
+  .pichead h2{font-size:15px;margin:0}
+  .pichead .sub{font-size:11.5px;color:var(--muted)}
+  .pic-body{padding:14px 16px 16px;display:flex;flex-direction:column;gap:10px}
+  .pic-banner{border-radius:9px;padding:9px 12px;font-size:12px;line-height:1.5;background:var(--blue-bg);color:var(--blue);border:1px solid var(--blue-line)}
+  .pic-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:10px}
+  .pic-card{border-radius:10px;padding:11px 13px;border:1px solid var(--line);animation:pop .22s ease-out;min-width:0}
+  .pic-card.confirmed{background:var(--green-bg);border-color:var(--green-line)}
+  .pic-card.gap{background:var(--amber-bg);border-color:var(--amber-line)}
+  .pic-card.mine{background:var(--violet-bg);border-color:var(--violet-line)}
+  .pic-card.next{background:var(--blue-bg);border-color:var(--blue-line)}
+  .pic-card h3{margin:0 0 7px;font-size:10.5px;text-transform:uppercase;letter-spacing:.05em;display:flex;align-items:center;justify-content:space-between;opacity:.8}
+  .pic-card h3 .count{font-size:10px;font-weight:800;background:rgba(255,255,255,.65);border-radius:8px;padding:1px 7px}
+  .pic-card ul{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:6px}
+  .pic-card li{font-size:12.5px;line-height:1.4;display:flex;gap:6px;align-items:flex-start}
+  .pic-card li .m{font-weight:800;font-size:11px;line-height:1.6;flex:none;width:12px;text-align:center}
+  .picempty{font-size:13px;color:var(--quiet);padding:16px 18px}
+  .webhint{font-size:12.5px;color:var(--muted);margin:0 0 12px}
+  .mobtabs{display:none}
+  @media(max-width:1000px){
+    .rep-web{grid-template-columns:1fr}
+    .picpanel{position:static;max-height:none}
+    .webchat{height:calc(100vh - 300px);min-height:440px}
+    .mobtabs{display:flex;gap:8px;margin:2px 0 14px}
+    .mobtab{position:relative;flex:1;padding:10px 10px;border-radius:10px;border:1px solid var(--line);background:var(--paper);font-size:13px;font-weight:700;color:var(--muted);cursor:pointer;text-align:center}
+    .mobtab.active{background:#1c1e22;color:#fff;border-color:#1c1e22}
+    .mobtab .dot{position:absolute;top:6px;right:10px;width:8px;height:8px;border-radius:50%;background:#e0574c}
+    .rep-web.show-chat .picpanel{display:none}
+    .rep-web.show-pic .webchat{display:none}
+  }
+
+  @media(max-width:1080px){.rep-layout{grid-template-columns:1fr}.side-note{display:none}}
+  @media(max-width:560px){.shell{padding:16px 12px 48px}.topbar{align-items:flex-start}.screen{height:640px}}
+  @media(max-width:520px){.shell{padding:10px 8px 24px}.webchat{height:calc(100vh - 220px);min-height:460px}.note{font-size:11.5px}}
+</style>
+<main class="shell">
+  <header class="topbar">
+    <div><div class="brand">ClearPipe</div><div class="deal">SR Manufacturing · AI Modernisation opportunity · Rep: Priya</div></div>
+    <div class="proto">Rep view only<br>Desktop, conversation-first</div>
+  </header>
+  <div class="note"><strong>Illustrative.</strong> The conversation is scripted. There is no live model or database. You play Priya by clicking the green replies.</div>
+  <!-- REP TAB -->
+  <section id="paneRep" role="tabpanel" aria-labelledby="tabRep">
+    <p class="webhint">The chat is on the left. The panel on the right is the rep's own picture of the deal. It fills in as they talk, so nothing has to be typed into a form. Click the green reply to send it as Priya.</p>
+    <div class="stepbar" id="stepbarRep"></div>
+    <div class="mobtabs" id="mobtabs">
+      <button type="button" class="mobtab active" data-tab="chat" onclick="showMobTab('chat')">Conversation</button>
+      <button type="button" class="mobtab" data-tab="pic" onclick="showMobTab('pic')">Your deal picture<span class="dot" id="picdot" hidden></span></button>
+    </div>
+    <div class="rep-web show-chat" id="repweb">
+      <div class="webchat">
+        <div class="phone-head"><div><div class="who">ClearPipe</div><div class="sub">SR Manufacturing · AI Modernisation</div></div>
+          <span class="lockpill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>Private to you</span></div>
+        <div class="chat" id="chat" aria-live="polite"></div>
+        <div class="composer">
+          <div class="replies" id="replies"></div>
+          <div class="inputbar"><div class="mic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="3" width="6" height="12" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg></div><div class="fake">Type or talk</div></div>
+        </div>
+      </div>
+      <aside class="picpanel" aria-label="Your deal picture">
+        <div class="pichead"><div><h2>Your deal picture</h2><div class="sub">Builds itself from the chat. You can correct any line.</div></div>
+          <span class="lockpill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>Private</span></div>
+        <div id="pic"></div>
+      </aside>
+    </div>
+  </section>
+
+  </main>
+
+<script>
+/* ===================== DATA ===================== */
+const T1 = "SR Manufacturing. The IT Head told me on 15 July that their planning and maintenance still run on Excel and old systems. He asked if AI could help. On 22 July he asked for an approach note. I sent it two days later. Nothing since. I got in through someone who knows their CEO.";
+
+const STEPS = [
+ /* 0 */ { rep:null,
+   cp:[{t:"Hi Priya. Tell me about a deal that is on your mind. Say it the way you would tell a friend."}],
+   nodes:["plan","guard"],
+   log:["Priya opened ClearPipe. No deal is loaded yet.","The planner chose an open question. There is no form and no fields.","The guardrails checked the greeting before it was sent."],
+   decide:{chosen:"Ask one open question",why:"Nothing is known yet, so the rep should do the talking.",gaps:[]},
+   db:["review 1 created for SR Manufacturing (draft)","turn 1 saved (ClearPipe)"] },
+ /* 1 */ { rep:{options:[{label:"Send by typing",text:T1,voice:false},{label:"Send as a voice note",text:T1,voice:true}]},
+   cp:[{t:"Let me check I understood."},{t:"On 15 July he told you that planning and maintenance still run on Excel and old systems. He asked if AI could help. On 22 July he asked for an approach note. You sent it on 24 July. Since then, 12 days with no reply. You came in through someone who knows their CEO."},{t:"Is that right?"}],
+   nodes:["cap","und","led","gap","plan","guard"],
+   log:["Input received. The raw words are saved exactly as the rep sent them.","The understand step pulled out five facts and dated them.","Each fact was graded: who started it, and whether it was done, said or believed.","The gap finder listed what is missing: who else is involved, who decides, who pays, other options, why now.","The planner chose to play the facts back first. Wrong facts would spoil everything after, so it waits for a yes."],
+   decide:{chosen:"Play back what was understood",why:"A yes from the rep makes the facts safe to use. Until then they stay in draft.",gaps:["Who else is involved","Who decides and who pays","Other options, including doing nothing","Why now"]},
+   db:["turn 2 saved (rep)","facts F1 to F5 saved (status: draft)","ai_call: understand (prompt v1, valid output)","ai_call: plan next turn"] },
+ /* 2 */ { rep:{options:[{label:"Yes, that is right.",text:"Yes, that is right."}]},
+   cp:[{t:"Before I say anything, what do you think is going on?"}],
+   nodes:["led","plan","guard"],
+   log:["The rep confirmed the playback. Facts F1 to F5 moved from draft to confirmed.","Rule applied: ask for the rep's own view before showing any view of ClearPipe's own. This keeps belief apart from evidence.","Later, a gap between what the rep believes and what the evidence shows can become the a-ha."],
+   decide:{chosen:"Ask for the rep's own view",why:"Their view is stored apart from the evidence. It becomes something to test, not something to accept.",gaps:["Who else is involved","Who decides and who pays","Other options","Why now"]},
+   db:["facts F1 to F5 status changed to confirmed","turn 3 saved (ClearPipe)"] },
+ /* 3 */ { rep:{options:[{label:"He is keen. But I am not sure anyone senior is behind it.",text:"He is keen. But I am not sure anyone senior is behind it."}]},
+   cp:[{t:"That matches what I see."},{t:"Can I try something? You know him better than I do, so tell me if I am wrong."},{t:"In his mind, he might be thinking: “I had an idea, so I asked for a note. It is only a note. I have not told my boss yet. I will tell him only if I have something strong to show.”",kind:"guess"},{t:"Does that sound like him?"}],
+   nodes:["led","gap","view","plan","guard"],
+   log:["The rep's view was saved as a belief. It is private and it is not evidence.","The belief has two parts. “He is keen” has some support: two buyer steps. “No senior owner” has no evidence either way.","The buyer's-view writer used only facts F1 and F2. Two lines could not be backed by a fact, so they are tagged as guesses.","The planner chose to ask, not tell. The rep can correct the guess in one line."],
+   decide:{chosen:"Show a labelled buyer's-view guess and ask if it sounds right",why:"The rep's reaction is easy to give and teaches ClearPipe more than a form field would.",gaps:["Has he told his boss? (guess A1)","Would he raise it only if he had something strong? (guess A2)","Who else is involved"]},
+   db:["fact F6 saved (rep belief, private)","guesses A1 and A2 saved (system, unchecked)","ai_call: buyer's view (prompt v1, valid output)","turn 4 saved (ClearPipe, tagged as a guess)"] },
+ /* 4 */ { rep:{options:[{label:"Mostly. But I think his boss knows.",text:"Mostly. But I think his boss knows."}]},
+   cp:[{t:"Good to know. Why do you think so?"}],
+   nodes:["led","plan","guard"],
+   log:["The rep says the boss may already know. Guess A1, “has not told his boss”, is now challenged by the rep.","A1 is not deleted. It is marked as challenged, and stays visible.","The planner asked for the reason. A reason can become evidence. An opinion on its own cannot."],
+   decide:{chosen:"Ask why the rep thinks the boss knows",why:"The rep has already corrected the guess. What ClearPipe still needs is the reason behind the correction.",gaps:["Reason for “boss knows”","Who else is involved"]},
+   db:["guess A1 status changed to challenged (by rep)","turn 6 saved (ClearPipe)"] },
+ /* 5 */ { rep:{options:[{label:"He said he would “check with the team”.",text:"He said he would “check with the team”."}]},
+   cp:[{t:"Then it may be more than a note to him."},{t:"I can think of two ways to find out. You could ask him who the team is. Or you could offer to explain the note to them yourself."},{t:"Which would you like to try?"}],
+   nodes:["led","gap","plan","guard"],
+   log:["The rep gave a reason. It is saved as F7: the buyer said he would check with the team. No date. Team not named.","Reliability is marked weak: no date, no names, and it reached ClearPipe second-hand.","The gap finder ranked “who is the team” first. It is the cheapest gap to close and the one most likely to change the picture.","The planner offered two ways to find out. The rep picks, so the rep stays in charge."],
+   decide:{chosen:"Offer two ways to find out who the team is",why:"It is the cheapest gap to close, and it would change the picture the most. The rep chooses.",gaps:["Who is “the team”","Has anyone senior agreed","When will they look at it"]},
+   db:["fact F7 saved (buyer said, undated, weak)","guess A1 linked to fact F7","turn 8 saved (ClearPipe)"] },
+ /* 6 */ { rep:{options:[{label:"I will ask him who the team is.",text:"I will ask him who the team is."}]},
+   cp:[{t:"Good. When he answers, look for two things."},{t:"Does he give you a name? Does he say when they will look at it? A name and a date are a strong sign. “I will pass it on” with no name is a weak one."},{t:"I will ask you how it went next week."}],
+   card:{type:"stand"},
+   nodes:["plan","mem","guard"],
+   log:["The rep chose to ask who the team is. This is saved as an open loop, with what to watch for and a check-in date of 12 August.","Rule: a name plus a date from the buyer is a strong sign. “I will pass it on” alone is a weak one.","The deal read was written in plain words. The four pillar bands stay behind the scenes. The rep sees four plain questions.","Nothing in this reply is a forecast, a score or a close date."],
+   decide:{chosen:"Say what to watch for, and set a check-in",why:"This turns advice into something the rep can test and report back on. It is also what makes ClearPipe worth opening again.",gaps:["Who is “the team”","Has anyone senior agreed","When will they look at it"]},
+   db:["open_loop R1 saved (action: ask who the team is; watch for: a name and a date; check-in 12 Aug)","pillar snapshot saved for review 1","turn 10 saved (ClearPipe, with deal read)"] },
+ /* 7 */ { divider:"One week later · Wed 12 Aug",
+   rep:{options:[{label:"Jump ahead one week",system:true}]},
+   cp:[{t:"Hi Priya. Last week you were going to ask the IT Head who “the team” is."},{t:"Did you get to ask?"}],
+   nodes:["mem","plan","guard"],
+   log:["The check-in date arrived. The memory part opened loop R1 and started the conversation.","The rep did not have to remember to come back. ClearPipe remembered.","Review 2 was created and copied forward from review 1, so nothing has to be typed in again."],
+   decide:{chosen:"Follow up on the open loop",why:"The next question is the one ClearPipe already promised to ask.",gaps:["Did the rep ask","What did the buyer answer"]},
+   db:["open_loop R1 opened by the scheduler","review 2 created, copied forward from review 1","turn 12 saved (ClearPipe)"] },
+ /* 8 */ { rep:{options:[{label:"Yes. He said Rohit from plant operations will look at it on Friday.",text:"Yes. He said Rohit from plant operations will look at it on Friday."}]},
+   cp:[{t:"That is a good sign. He gave you a name and a day. Last week you had neither."},{t:"Do you know what Rohit's role is here?"}],
+   card:{type:"since"},
+   nodes:["cap","und","led","mem","guard"],
+   log:["The rep's answer was understood. Loop R1 is closed: what ClearPipe suggested, what the rep did, and what the buyer did.","Two new buyer facts: F8, the buyer named a colleague, and F9, the buyer set a day. Cost to the buyer is medium, because a colleague and a date are now on record.","Two pillars moved. Stakeholder Engagement went from Thin to Partial, because a second person was named by the buyer. Decision Readiness went from Unconfirmed to Thin, because a review day exists.","The planner asked what Rohit does. His authority will be graded from the rep's words."],
+   decide:{chosen:"Ask what Rohit does",why:"A name is not authority. His role has to be learned before it is counted.",gaps:["Rohit's role","Who signs","Who pays","Other options being considered"]},
+   db:["facts F8 and F9 saved (buyer act and buyer said, confirmed)","open_loop R1 closed (outcome: name and date given)","pillar snapshot saved for review 2","turn 14 saved (ClearPipe, with change since last week)"] },
+ /* 9 */ { rep:{options:[{label:"He runs plant operations. I think he decides.",text:"He runs plant operations. I think he decides."}]},
+   cp:[{t:"Thanks. I will keep “Rohit decides” as your guess for now, not a fact."},{t:"One way to check: ask the IT Head, “Who usually signs off on something like this?”"},{t:"Do you want to try that before Friday?"}],
+   nodes:["led","plan","mem","guard"],
+   log:["The rep said Rohit runs plant operations and probably decides. Saved as F10, a rep belief, private.","Rule: a job title is not authority. “I think he decides” stays a guess until the buyer says who signs.","The planner offered one way to test it. No pillar band changed."],
+   decide:{chosen:"Offer one test for who signs",why:"This is the biggest gap left under Decision Readiness.",gaps:["Who signs","Who pays","Other options being considered"]},
+   db:["fact F10 saved (rep belief, private)","open_loop R2 offered (ask who signs off)","turn 16 saved (ClearPipe)"] }
+];
+
+/* ===================== STATE ===================== */
+let n=0, busy=false, mobTab='chat'; const choice={voice:false};
+const $=id=>document.getElementById(id);
+const sleep=ms=>new Promise(r=>setTimeout(r,ms));
+const ICON_LOCK='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>';
+const ICON_MIC='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="3" width="6" height="12" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg>';
+const ICON_PLAY='<svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 4l13 8-13 8z"/></svg>';
+const esc=s=>String(s).replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
+
+/* ===================== REP CARDS ===================== */
+function cardHTML(c){
+  if(c.type==="stand") return `<div class="card"><h3>Where things stand</h3>
+   <div class="row"><b>Clear so far</b><ul><li>He told you about a real problem.</li><li>He asked for the note himself.</li></ul></div>
+   <div class="row"><b>Not clear yet</b><ul><li>Who else is involved.</li><li>Whether anyone senior has agreed.</li><li>When they will look at it.</li></ul></div>
+   <details><summary>How I got here</summary><dl>
+    <dt>Is the buyer moving things forward?</dt><dd>A little. He has asked twice, but both asks are small.</dd>
+    <dt>Are the right people involved?</dt><dd>Only one person so far.</dd>
+    <dt>Do we know how they will decide?</dt><dd>Not yet.</dd>
+    <dt>Are we ahead of other options?</dt><dd>We do not know. Nobody has said.</dd></dl></details></div>`;
+  return `<div class="card"><h3>Since last week</h3>
+   <div class="row"><b>New</b><ul><li>He named a colleague, Rohit.</li><li>He set a day, Friday.</li></ul></div>
+   <div class="row"><b>Still not known</b><ul><li>Who signs off.</li><li>Who pays.</li><li>Whether SR Manufacturing looked at anyone else.</li></ul></div></div>`;
+}
+
+/* ===================== REP RENDER ===================== */
+function repBubble(k){
+  const s=STEPS[k]; if(!s.rep||s.rep.options[0].system) return null;
+  const opt=k===1?(choice.voice?s.rep.options[1]:s.rep.options[0]):s.rep.options[0];
+  const d=document.createElement('div'); d.className='msg rep';
+  if(k===1&&opt.voice){
+    const bars=[8,14,10,18,12,20,9,16,13,19,8,15,11,17,10,14,9,12].map(h=>`<i style="height:${h}px"></i>`).join('');
+    d.innerHTML=`<div class="voice"><span class="play">${ICON_PLAY}</span><span class="wave">${bars}</span><span class="len">0:31</span></div><div class="transcript"><b>Transcript</b> (tap to fix any word)<br>${esc(opt.text)}</div>`;
+  } else d.textContent=opt.text;
+  return d;
+}
+function cpBubble(m){
+  const d=document.createElement('div'); d.className='msg cp'+(m.kind==='guess'?' guess':'');
+  d.innerHTML=(m.kind==='guess'?'<span class="tag">A guess, not a fact</span><br>':'')+esc(m.t);
+  return d;
+}
+function cardEl(c){const w=document.createElement('div');w.innerHTML=cardHTML(c);return w.firstElementChild}
+function dividerEl(t){const d=document.createElement('div');d.className='divider';d.textContent=t;return d}
+function scrollChat(){const c=$('chat');c.scrollTop=c.scrollHeight}
+function fillStep(chat,k){
+  const s=STEPS[k];
+  if(s.divider) chat.appendChild(dividerEl(s.divider));
+  const rb=repBubble(k); if(rb) chat.appendChild(rb);
+  s.cp.forEach(m=>chat.appendChild(cpBubble(m)));
+  if(s.card) chat.appendChild(cardEl(s.card));
+}
+function renderChatStatic(){const chat=$('chat');chat.innerHTML='';for(let k=0;k<=n;k++)fillStep(chat,k);scrollChat()}
+async function animateStep(k){
+  const chat=$('chat'),s=STEPS[k];
+  if(s.divider){chat.appendChild(dividerEl(s.divider));await sleep(300)}
+  const rb=repBubble(k); if(rb){chat.appendChild(rb);scrollChat()}
+  for(const m of s.cp){
+    const ty=document.createElement('div');ty.className='typing';ty.innerHTML='<i></i><i></i><i></i>';chat.appendChild(ty);scrollChat();
+    await sleep(650+Math.min(700,m.t.length*4));
+    ty.remove();chat.appendChild(cpBubble(m));scrollChat();
+  }
+  if(s.card){await sleep(300);chat.appendChild(cardEl(s.card));scrollChat()}
+}
+function renderReplies(){
+  const box=$('replies');box.innerHTML='';
+  if(busy) return;
+  const next=STEPS[n+1];
+  if(!next){box.innerHTML='<div class="endnote">End of the walk-through. Use Restart to run it again.</div>';return}
+  const h=document.createElement('div');h.className='hint';h.textContent=next.rep.options[0].system?'Tap to continue':'Tap to send as Priya';box.appendChild(h);
+  next.rep.options.forEach((o,i)=>{
+    const b=document.createElement('button');b.className='reply';b.type='button';
+    b.innerHTML=(o.voice?ICON_MIC:'')+esc(o.label);
+    b.onclick=()=>advance(i);box.appendChild(b);
+  });
+}
+function renderStepbars(){
+  const dots=Array.from({length:STEPS.length},(_,i)=>`<i class="${i<=n?'on':''}"></i>`).join('');
+  const html=`<span class="count">Step ${n+1} of ${STEPS.length}</span><span class="dots">${dots}</span>
+    <button class="btn" type="button" onclick="back()" ${n===0||busy?'disabled':''}>Back</button>
+    <button class="btn" type="button" onclick="restart()">Restart</button>
+    ${'<button class="btn primary" type="button" onclick="advance(0)" '+((n>=STEPS.length-1||busy)?'disabled':'')+'>Next step</button>'}`;
+  $('stepbarRep').innerHTML=html;
+}
+
+/* ===================== DEAL PICTURE (rep side, web) ===================== */
+const PIC_CONFIRMED=[
+ {t:"15 Jul: He told you Excel and old systems are holding them back.",from:1,ok:2},
+ {t:"22 Jul: He asked for an approach note.",from:1,ok:2},
+ {t:"24 Jul: You sent it. No reply for 12 days.",from:1,ok:2},
+ {t:"You came in through a referral.",from:1,ok:2},
+ {t:"12 Aug: He named a colleague, Rohit, from plant operations.",from:8,ok:8},
+ {t:"He said Rohit will look at it on Friday.",from:8,ok:8}
+];
+function picCard(type,mark,title,items){
+  return `<div class="pic-card ${type}"><h3>${esc(title)}<span class="count">${items.length}</span></h3>
+    <ul>${items.map(t=>`<li><span class="m">${mark}</span><span>${t}</span></li>`).join('')}</ul></div>`;
+}
+function renderPicture(){
+  const el=$('pic'); if(!el) return;
+  if(n===0){el.innerHTML='<p class="picempty">Nothing here yet. Tell ClearPipe about a deal and this panel will fill in.</p>';return}
+
+  const cards=[];
+
+  const conf=PIC_CONFIRMED.filter(x=>x.from<=n);
+  if(conf.length){
+    const items=conf.map(x=>x.ok<=n?esc(x.t):esc(x.t)+' <em>(waiting for your yes)</em>');
+    cards.push(picCard('confirmed','✓','What we know',items));
+  }
+
+  const gaps=STEPS[n].decide.gaps;
+  if(gaps.length&&n>=1) cards.push(picCard('gap','?','Not known yet',gaps.map(esc)));
+
+  const mine=[];
+  if(n>=3) mine.push('He is keen. Not sure anyone senior is behind it.');
+  if(n>=4) mine.push('You think his boss already knows.');
+  if(n>=9) mine.push('You think Rohit decides.');
+  if(mine.length) cards.push(picCard('mine','•','Your own view',mine.map(esc)));
+
+  if(n>=3){
+    const guesses=[n>=4?'He has not told his boss yet. (you said no)':'He has not told his boss yet.','He will raise it only if he has something strong.'];
+    cards.push(picCard('mine','~',"ClearPipe's View",guesses.map(esc)));
+  }
+
+  const lp=[];
+  if(n===6) lp.push('Ask him who “the team” is. Look for a name and a day. (check-in 12 Aug)');
+  if(n===7) lp.push('Ask him who “the team” is. (due today)');
+  if(n>=8) lp.push('Asked who “the team” is. He named Rohit and a day. (done)');
+  if(n>=9) lp.push('Ask who signs off. (your choice)');
+  if(lp.length) cards.push(picCard('next','→','Suggested Next Step',lp.map(esc)));
+
+  const lf=[];
+  if(n===6||n===7) lf.push({m:'▲',t:'Strong sign: a name and a date from him.'},{m:'▽',t:'Weak sign: “I will pass it on” with no name.'});
+  if(n>=9) lf.push({m:'▲',t:'Strong sign: a named signer with a clear next step.'},{m:'▽',t:'Weak sign: a vague “I will check.”'});
+  if(lf.length) cards.push(`<div class="pic-card next"><h3>What to Look For<span class="count">${lf.length}</span></h3><ul>${lf.map(i=>`<li><span class="m">${i.m}</span><span>${esc(i.t)}</span></li>`).join('')}</ul></div>`);
+
+  const banner=n>=8?'<div class="pic-banner">Since last week: two new things from the buyer, a named colleague and a day. Still not known: who signs, who pays, other options.</div>':'';
+
+  el.innerHTML=`<div class="pic-body">${banner}<div class="pic-grid">${cards.join('')}</div></div>`;
+
+  const dot=$('picdot');
+  if(dot) dot.hidden = !(n>=1 && mobTab!=='pic');
+}
+function showMobTab(t){
+  mobTab=t;
+  const rw=$('repweb');
+  if(rw){rw.classList.remove('show-chat','show-pic');rw.classList.add(t==='pic'?'show-pic':'show-chat')}
+  document.querySelectorAll('.mobtab').forEach(b=>b.classList.toggle('active',b.dataset.tab===t));
+  const dot=$('picdot'); if(dot&&t==='pic') dot.hidden=true;
+}
+
+/* ===================== ACTIONS ===================== */
+function renderAll(){renderStepbars();renderReplies();renderPicture()}
+async function advance(i){
+  if(busy||n>=STEPS.length-1) return;
+  const k=n+1;
+  if(k===1) choice.voice=!!STEPS[1].rep.options[i||0].voice;
+  busy=true;n=k;renderStepbars();renderReplies();renderPicture();
+  await animateStep(k);
+  busy=false;renderStepbars();renderReplies();
+  scrollChat();
+}
+function back(){if(busy||n===0)return;n--;renderChatStatic();renderAll();scrollChat()}
+function restart(){if(busy)return;n=0;choice.voice=false;renderChatStatic();renderAll();scrollChat()}
+
+renderChatStatic();renderAll();
+</script>
+
+</body></html>
