@@ -138,7 +138,8 @@
     .mobtabs{display:flex;gap:8px;margin:2px 0 14px}
     .mobtab{position:relative;flex:1;padding:10px 10px;border-radius:10px;border:1px solid var(--line);background:var(--paper);font-size:13px;font-weight:700;color:var(--muted);cursor:pointer;text-align:center}
     .mobtab.active{background:#1c1e22;color:#fff;border-color:#1c1e22}
-    .mobtab .dot{position:absolute;top:6px;right:10px;width:8px;height:8px;border-radius:50%;background:#e0574c}
+    .mobtab .dot{position:absolute;top:6px;right:10px;width:8px;height:8px;border-radius:50%;background:#e0574c;animation:dotPulse 1.8s infinite}
+    @keyframes dotPulse{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.5);opacity:.5}}
     .rep-web.show-chat .picpanel{display:none}
     .rep-web.show-pic .webchat{display:none}
   }
@@ -149,7 +150,16 @@
 </style>
 <main class="shell">
   <header class="topbar">
-    <div><div class="brand">ClearPipe</div><div class="deal">SR Manufacturing · AI Modernisation opportunity · Rep: Priya</div></div>
+
+<div>
+  <div class="brand">ClearPipe</div>
+  <div class="deal" id="dealLabel">SR Manufacturing · AI Modernisation · Rep: Priya</div>
+  <div style="display:flex;gap:6px;margin-top:6px;">
+    <button class="btn" style="padding:2px 7px;font-size:11px;" type="button" onclick="setScenario('IT Services')">IT Services</button>
+    <button class="btn" style="padding:2px 7px;font-size:11px;" type="button" onclick="setScenario('Cyber BFSI')">Cyber / BFSI</button>
+    <button class="btn" style="padding:2px 7px;font-size:11px;" type="button" onclick="setScenario('EdTech')">EdTech</button>
+  </div>
+</div>
     <div class="proto">Rep view only<br>Desktop, conversation-first</div>
   </header>
   <div class="note"><strong>Illustrative.</strong> The conversation is scripted. There is no live model or database. You play Priya by clicking the green replies.</div>
@@ -317,7 +327,15 @@ function renderReplies(){
   const box=$('replies');box.innerHTML='';
   if(busy) return;
   const next=STEPS[n+1];
-  if(!next){box.innerHTML='<div class="endnote">End of the walk-through. Use Restart to run it again.</div>';return}
+
+if(!next){
+  box.innerHTML=`<div style="background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:14px;margin-top:8px;font-size:13px;color:var(--ink);">
+    <div style="font-weight:720;margin-bottom:4px;color:var(--ink);">Want to run a live, stalled deal through this framework?</div>
+    <div style="color:var(--muted);font-size:12px;line-height:1.4;margin-bottom:10px;">Designed for enterprise tech leaders navigating 6–18 month sales cycles in Indian B2B.</div>
+    <a href="mailto:shankar@growthstratex.com?subject=ClearPipe%20Live%20Deal%20Walkthrough" style="display:inline-block;background:var(--ink);color:#fff;text-decoration:none;padding:7px 14px;border-radius:6px;font-weight:650;font-size:12px;">Drop a note to Shankar &rarr;</a>
+  </div>`;
+  return;
+}
   const h=document.createElement('div');h.className='hint';h.textContent=next.rep.options[0].system?'Tap to continue':'Tap to send as Priya';box.appendChild(h);
   next.rep.options.forEach((o,i)=>{
     const b=document.createElement('button');b.className='reply';b.type='button';
@@ -414,7 +432,20 @@ async function advance(i){
 function back(){if(busy||n===0)return;n--;renderChatStatic();renderAll();scrollChat()}
 function restart(){if(busy)return;n=0;choice.voice=false;renderChatStatic();renderAll();scrollChat()}
 
+function setScenario(type){
+  const label = document.getElementById('dealLabel');
+  if(!label) return;
+  if(type === 'Cyber BFSI') {
+    label.textContent = 'Bank Cyber SI · POC Drift · Rep: Priya';
+  } else if(type === 'EdTech') {
+    label.textContent = 'Institutional EdTech · Evaluation Drift · Rep: Priya';
+  } else {
+    label.textContent = 'SR Manufacturing · AI Modernisation · Rep: Priya';
+  }
+}
+
 renderChatStatic();renderAll();
 </script>
 
-</body></html>
+</body>
+</html>
