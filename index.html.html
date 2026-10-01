@@ -1,34 +1,26 @@
 <!doctype html>
-<html>
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-  <title>ClearPipe</title>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="robots" content="noindex, nofollow"><title>ClearPipe</title>  <!-- Vercel Web Analytics -->
+<script>window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };</script>
+<script defer src="/_vercel/insights/script.js"></script>
+<style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style>
+<style>
 
-  <!-- Vercel Web Analytics -->
-  <script>
-    window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
-  </script>
-  <script defer src="/_vercel/insights/script.js"></script>
-
-  <style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style>
-  <style>
-    :root{
-      color-scheme:light;
-      --paper:#f4f4f2;--surface:#fff;--surface-soft:#fafbfa;--ink:#22252a;--muted:#6b7280;
-      --quiet:#9aa0aa;--line:#dde1e6;--green:#2f5d40;--green-bg:#eef5f0;--green-line:#a9c9b3;
-      --amber:#6b4a17;--amber-bg:#fdf3e3;--amber-line:#e0b876;--blue:#28457a;--blue-bg:#eef2fb;
-      --blue-line:#a9c0e0;--violet:#3a3160;--violet-bg:#f3f1fb;--violet-line:#c9bce8;
-      --danger:#7a3418;--danger-bg:#fbeee9;--danger-line:#d98a6c;--shadow:0 1px 2px rgba(20,27,38,.04)
-    }
+  :root{
+    color-scheme:light;
+    --paper:#f4f4f2;--surface:#fff;--surface-soft:#fafbfa;--ink:#22252a;--muted:#6b7280;
+    --quiet:#9aa0aa;--line:#dde1e6;--green:#2f5d40;--green-bg:#eef5f0;--green-line:#a9c9b3;
+    --amber:#6b4a17;--amber-bg:#fdf3e3;--amber-line:#e0b876;--blue:#28457a;--blue-bg:#eef2fb;
+    --blue-line:#a9c0e0;--violet:#3a3160;--violet-bg:#f3f1fb;--violet-line:#c9bce8;
+    --danger:#7a3418;--danger-bg:#fbeee9;--danger-line:#d98a6c;--shadow:0 1px 2px rgba(20,27,38,.04)
+  }
   *{box-sizing:border-box}
   html{scroll-behavior:smooth}
   body{margin:0;background:var(--paper);color:var(--ink);font-family:-apple-system,"Segoe UI",Helvetica,Arial,sans-serif;line-height:1.45}
   button,input,textarea,select{font:inherit}
   .shell{max-width:1180px;margin:0 auto;padding:26px 22px 72px}
   .topbar{display:flex;justify-content:space-between;gap:20px;align-items:flex-end;margin-bottom:8px}
-  .brand{font-size:21px;font-weight:720;letter-spacing:-.02em}
-  .deal{font-size:12.5px;color:var(--muted);margin-top:2px}
+  .brand{font-size:30px;font-weight:720;letter-spacing:-.02em}
+  .deal{font-size:16px;color:var(--muted);margin-top:4px}
   .proto{font-size:11px;text-transform:uppercase;letter-spacing:.08em;color:var(--green);font-weight:700;text-align:right}
   .note{background:var(--green-bg);border:1px solid var(--green-line);color:var(--green);font-size:12.5px;padding:9px 14px;border-radius:7px;margin:14px 0 14px}
 
@@ -102,6 +94,31 @@
   .mic{width:34px;height:34px;border-radius:50%;border:1px solid var(--green-line);background:var(--green-bg);color:var(--green);display:grid;place-items:center;flex:none}
   .mic svg{width:16px;height:16px}
   .endnote{font-size:12px;color:var(--muted);text-align:center;padding:2px 6px 6px}
+  .update-deal{border:1px solid var(--green-line);background:var(--green-bg);color:var(--green);border-radius:7px;padding:7px 10px;font-size:11.5px;font-weight:700;cursor:pointer;white-space:nowrap}
+  .update-deal:hover{background:#e3efe7}
+  .phone-head .head-actions{display:flex;align-items:center;gap:8px;flex-wrap:wrap;justify-content:flex-end}
+  .commit-card,.feedback-card{align-self:stretch;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px 14px;font-size:12.5px}
+  .commit-card{border-color:var(--blue-line);background:var(--blue-bg)}
+  .commit-card h3,.feedback-card h3{font-size:11px;text-transform:uppercase;letter-spacing:.05em;margin:0 0 8px;color:var(--blue)}
+  .feedback-card h3{color:var(--ink);text-transform:none;letter-spacing:0;font-size:13px}
+  .commit-row{display:grid;grid-template-columns:86px 1fr;gap:5px;margin:4px 0}
+  .commit-row b{color:var(--muted);font-weight:650}
+  .commit-card select,.commit-card input[type=date],.feedback-card textarea,.update-panel textarea{border:1px solid #cfd3d9;background:#fff;border-radius:6px;color:var(--ink);padding:5px 7px;max-width:100%;width:100%}
+  .commit-card input[type=date]{margin-top:5px}
+  .commit-note{font-size:11px;color:var(--muted);margin:8px 0 0}
+  .feedback-options{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}
+  .feedback-options button{border:1px solid var(--line);background:var(--surface-soft);border-radius:15px;padding:5px 10px;color:var(--ink);cursor:pointer;font-size:12px}
+  .feedback-options button[aria-pressed=true]{border-color:var(--green-line);background:var(--green-bg);color:var(--green);font-weight:700}
+  .feedback-followup{margin-top:9px}
+  .feedback-followup label{display:block;margin-bottom:5px;color:var(--muted)}
+  .feedback-followup textarea,.update-panel textarea{min-height:58px;resize:vertical}
+  .feedback-followup button,.update-panel button{margin-top:6px}
+  .update-panel{border-top:1px solid var(--line);padding-top:8px;font-size:12px}
+  .update-panel label{display:block;color:var(--muted);margin-bottom:5px}
+  .update-actions{display:flex;gap:6px}
+  .update-actions button{margin-top:6px}
+  .update-note{font-size:11px;color:var(--muted);margin-top:5px}
+  .update-deal:focus-visible,.feedback-options button:focus-visible,.commit-card select:focus-visible,.commit-card input:focus-visible,.feedback-card textarea:focus-visible,.update-panel textarea:focus-visible{outline:3px solid rgba(91,140,110,.35);outline-offset:2px}
 
 
   /* ---------- WEB LAYOUT ---------- */
@@ -132,40 +149,143 @@
   .webhint{font-size:12.5px;color:var(--muted);margin:0 0 12px}
   .mobtabs{display:none}
   @media(max-width:1000px){
+    .rep-web{gap:14px}
+    .phone-head,.pichead{flex-wrap:wrap;gap:6px}
+    .head-actions{width:100%;justify-content:space-between}
+  }
+  @media(max-width:620px){
     .rep-web{grid-template-columns:1fr}
     .picpanel{position:static;max-height:none}
     .webchat{height:calc(100vh - 300px);min-height:440px}
     .mobtabs{display:flex;gap:8px;margin:2px 0 14px}
     .mobtab{position:relative;flex:1;padding:10px 10px;border-radius:10px;border:1px solid var(--line);background:var(--paper);font-size:13px;font-weight:700;color:var(--muted);cursor:pointer;text-align:center}
     .mobtab.active{background:#1c1e22;color:#fff;border-color:#1c1e22}
-    .mobtab .dot{position:absolute;top:6px;right:10px;width:8px;height:8px;border-radius:50%;background:#e0574c;animation:dotPulse 1.8s infinite}
-    @keyframes dotPulse{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.5);opacity:.5}}
+    .mobtab .dot{position:absolute;top:6px;right:10px;width:8px;height:8px;border-radius:50%;background:#e0574c}
     .rep-web.show-chat .picpanel{display:none}
     .rep-web.show-pic .webchat{display:none}
   }
 
   @media(max-width:1080px){.rep-layout{grid-template-columns:1fr}.side-note{display:none}}
   @media(max-width:560px){.shell{padding:16px 12px 48px}.topbar{align-items:flex-start}.screen{height:640px}}
-  @media(max-width:520px){.shell{padding:10px 8px 24px}.webchat{height:calc(100vh - 220px);min-height:460px}.note{font-size:11.5px}}
-</style>
+  @media(max-width:520px){.shell{padding:10px 8px 24px}.webchat{height:calc(100vh - 220px);min-height:460px}.note{font-size:11.5px}.phone-head,.pichead{flex-wrap:wrap;gap:6px}.head-actions{width:100%;justify-content:space-between}}
+
+  /* ---------- additions: header actions, reminder email, overlays ---------- */
+  .head-actions{display:flex;align-items:center;gap:8px;flex-wrap:wrap;justify-content:flex-end}
+  button.lockpill{cursor:pointer;font-family:inherit}
+  button.lockpill:hover{background:#e3efe7}
+  .update-deal{border:1px solid var(--green-line);background:var(--green-bg);color:var(--green);border-radius:7px;padding:7px 10px;font-size:11.5px;font-weight:700;cursor:pointer;white-space:nowrap}
+  .update-deal:hover{background:#e3efe7}
+  .update-deal[disabled]{opacity:.4;cursor:default}
+  .update-deal:focus-visible,button.lockpill:focus-visible{outline:3px solid rgba(91,140,110,.35);outline-offset:2px}
+  .rem{align-self:stretch;background:var(--blue-bg);border:1px solid var(--blue-line);border-radius:12px;padding:10px 13px;font-size:13px;animation:pop .22s ease-out}
+  .rem .from{font-size:11px;font-weight:700;color:var(--blue);margin-bottom:5px;display:flex;justify-content:space-between}
+  .rem .from span{font-weight:500;opacity:.8}
+  .rem .subj{font-weight:700;margin-bottom:3px}
+  .rem .rem-row{margin-top:8px}
+  .rem .rem-btn{display:block;text-align:center;border-top:1px solid var(--blue-line);padding-top:7px;color:var(--blue);font-weight:650;font-size:12.5px}
+  .overlay{position:fixed;inset:0;background:rgba(20,27,38,.45);display:grid;place-items:center;z-index:100;padding:16px}
+  .sheet{background:var(--surface);border-radius:14px;max-width:560px;width:100%;max-height:90vh;overflow:auto;padding:20px 22px;box-shadow:0 12px 40px rgba(20,27,38,.25);font-size:13.5px}
+  .sheet h2{font-size:17px;margin:0 0 4px}
+  .sheet .sub{font-size:12px;color:var(--muted);margin-bottom:12px}
+  .sheet h3{font-size:11px;text-transform:uppercase;letter-spacing:.05em;color:#7c838d;margin:14px 0 6px}
+  .sheet ul{margin:0;padding-left:18px}
+  .sheet li{margin:2px 0}
+  .sheet ol{margin:0;padding-left:20px}
+  .sheet ol li{margin:7px 0}
+  .sheet .foot{font-size:12px;color:var(--muted);background:var(--surface-soft);border:1px solid var(--line);border-radius:8px;padding:9px 11px;margin-top:12px}
+  .sheet .actions{display:flex;gap:8px;margin-top:14px;justify-content:flex-end;flex-wrap:wrap}
+  .sheet label.opt{display:flex;gap:8px;align-items:center;font-size:12.5px;margin-top:12px}
+  @media(max-width:1000px){.head-actions{width:100%;justify-content:space-between}}
+
+  /* ---------- development reference only ---------- */
+  .tap-row{margin:8px 0}
+  .tap-q{font-size:12.5px;font-weight:650;margin-bottom:4px}
+  .commit-card .tap-row{border-top:1px solid var(--blue-line);padding-top:8px;margin-top:10px}
+  .devpanel{margin-top:22px;border:1px dashed #b9c0c9;border-radius:10px;padding:10px 14px;background:var(--surface-soft)}
+  .devpanel summary{cursor:pointer;font-weight:700;font-size:13px}
+  .devbody{margin-top:10px;font-size:12.5px}
+  .devrules{margin:6px 0 0;padding-left:18px}
+  .devrules li{margin:4px 0}
+  .dev-actions{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0 4px}
+  .devpreview{background:#fff;border:1px solid var(--line);border-radius:10px;padding:12px 14px;margin-top:8px;min-height:20px}
+  .devpreview:empty{display:none}
+  .devpreview pre{white-space:pre-wrap;font-size:11.5px;margin:0;max-height:320px;overflow:auto}
+
+
+/* ---------- v3 additions ---------- */
+.msg.stands{background:var(--blue-bg);border:1px solid var(--blue-line);color:#1f3560}
+.tag.blue{color:var(--blue);border-color:var(--blue-line)}
+.steplabel{font-size:12px;color:var(--muted);border-left:1px solid var(--line);padding-left:10px}
+.update-deal.planned{border-style:dashed;border-color:#c5cad1;background:var(--surface-soft);color:var(--quiet)}
+.update-deal.planned:hover{background:#f0f1f3}
+.ptag{display:inline-block;margin-left:6px;font-size:9.5px;text-transform:uppercase;letter-spacing:.05em;font-weight:800;color:var(--quiet);border:1px solid #d5d9df;border-radius:8px;padding:0 5px;background:#fff}
+.linkbtn{background:none;border:0;padding:0;color:var(--muted);text-decoration:underline;cursor:pointer;font-size:12px;font-family:inherit}
+.pic-card.glance{grid-column:1/-1;background:#fff;border-color:var(--line)}
+.glance-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.glance-chip{display:flex;justify-content:space-between;align-items:center;gap:8px;border:1px solid var(--line);border-radius:8px;padding:8px 10px;font-size:12.5px;background:#fff}
+.band{font-size:11px;font-weight:700;border-radius:999px;padding:2px 9px;white-space:nowrap}
+.band.partial{background:#fbe8b8;color:#6b4a07}.band.thin{background:#fde0d4;color:#8a3a1c}.band.unconfirmed{background:#e6e8ec;color:#4b5563}.band.well{background:#d6ecd9;color:#1f5a30}
+.glance-note{font-size:11.5px;color:var(--muted);margin:9px 0 6px}
+.glance-legend{display:grid;grid-template-columns:1fr 1fr;gap:4px 14px;margin:0;font-size:11.5px}
+.glance-legend div{display:block}.glance-legend dt{display:inline;font-weight:700}.glance-legend dd{display:inline;margin:0 0 0 3px;color:var(--muted)}
+@media(max-width:480px){.glance-grid,.glance-legend{grid-template-columns:1fr}}
+.endcta{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:14px;margin-top:4px}
+.endcta-h{font-weight:720;font-size:13px;margin-bottom:4px}
+.endcta-s{color:var(--muted);font-size:12px;line-height:1.4;margin-bottom:10px}
+.endcta-a{display:inline-block;background:var(--ink);color:#fff;text-decoration:none;padding:7px 14px;border-radius:6px;font-weight:650;font-size:12px}
+.linkbtn.whylink{font-size:inherit}
+.linkbtn:hover{color:var(--ink)}
+.linkbtn:focus-visible{outline:3px solid rgba(91,140,110,.35);outline-offset:2px}
+
+/* pick cards and menu (in the composer) */
+.pickwrap .hint{font-size:10.5px;color:var(--quiet);text-transform:uppercase;letter-spacing:.05em;margin-bottom:6px}
+.pickcards,.menu{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.pickcard,.menuitem{border:1px solid var(--green-line);background:var(--green-bg);color:var(--ink);border-radius:12px;padding:10px 12px;font-size:13px;line-height:1.4;cursor:pointer;text-align:left;font-family:inherit}
+.pickcard:hover,.menuitem:hover{background:#e3efe7}
+.pickcard.wild{background:var(--violet-bg);border-color:var(--violet-line)}
+.pickcard.wild:hover{background:#ebe7f8}
+.wtag{display:block;font-size:10px;text-transform:uppercase;letter-spacing:.05em;font-weight:700;color:var(--violet);margin-bottom:3px}
+.quietlinks{display:flex;gap:16px;margin:8px 2px 2px}
+.caption{font-size:11px;color:var(--quiet);margin:4px 2px 8px}
+.menuitem b{display:block;font-size:13.5px}
+.menuitem span.s{display:block;font-size:11.5px;color:var(--muted);margin-top:2px}
+.menuitem.planned{border:1px dashed #c5cad1;background:var(--surface-soft);color:var(--quiet)}
+.menuitem.planned:hover{background:#f0f1f3}
+.menuitem.planned span.s{color:var(--quiet)}
+.notebox{font-size:12px;color:var(--muted);background:var(--surface-soft);border:1px solid var(--line);border-radius:8px;padding:8px 10px;margin-bottom:8px}
+
+/* why-not */
+.whynot{margin-top:9px;border-top:1px solid var(--blue-line);padding-top:8px}
+.whynot .resp{font-size:12px;color:var(--muted);margin-top:7px}
+
+/* home: deals list */
+.home{max-width:760px;margin:6px auto 0}
+.home-head{display:flex;justify-content:space-between;align-items:flex-end;gap:12px;margin-bottom:12px}
+.home-head h2{font-size:19px;margin:0}
+.home-head .sub{font-size:12px;color:var(--muted)}
+.deal-list{display:flex;flex-direction:column;gap:10px}
+.deal-row{display:grid;grid-template-columns:1fr auto;gap:6px 12px;align-items:center;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:13px 16px;cursor:pointer;text-align:left;width:100%;font:inherit;color:inherit;box-shadow:var(--shadow)}
+.deal-row:hover{border-color:var(--green-line)}
+.deal-row:focus-visible{outline:3px solid rgba(91,140,110,.35);outline-offset:2px}
+.deal-row .nm{font-weight:700;font-size:14.5px}
+.deal-row .nm span{font-weight:500;color:var(--muted)}
+.deal-row .ln{font-size:12.5px;color:var(--muted);margin-top:2px}
+.pill{font-size:11px;font-weight:700;border-radius:12px;padding:3px 10px;border:1px solid var(--line);color:var(--muted);background:var(--surface-soft);white-space:nowrap}
+.pill.due{background:var(--amber-bg);border-color:var(--amber-line);color:var(--amber)}
+.home-foot{font-size:12px;color:var(--muted);margin:12px 2px 0}
+.homenote{font-size:12px;color:var(--muted);background:var(--surface-soft);border:1px solid var(--line);border-radius:8px;padding:8px 10px;margin-top:10px}
+
+/* picture: next steps list */
+.loop-status{font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:.04em;border-radius:6px;padding:0 5px;background:#fff;border:1px solid var(--blue-line);color:var(--blue);margin-right:4px}
+.loop-status.done{border-color:var(--green-line);color:var(--green)}
+@media(max-width:480px){.pickcards,.menu{grid-template-columns:1fr}.steplabel{border-left:0;padding-left:0;flex-basis:100%}}
+</style></head><body>
 <main class="shell">
   <header class="topbar">
-
-<div>
-  <div class="brand">ClearPipe</div>
-  <div class="deal" id="dealLabel">SR Manufacturing · AI Modernisation · Rep: Priya</div>
-  <div style="display:flex;gap:6px;margin-top:6px;">
-    <button class="btn" style="padding:2px 7px;font-size:11px;" type="button" onclick="setScenario('IT Services')">IT Services</button>
-    <button class="btn" style="padding:2px 7px;font-size:11px;" type="button" onclick="setScenario('Cyber BFSI')">Cyber / BFSI</button>
-    <button class="btn" style="padding:2px 7px;font-size:11px;" type="button" onclick="setScenario('EdTech')">EdTech</button>
-  </div>
-</div>
-    <div class="proto">Rep view only<br>Desktop, conversation-first</div>
+    <div><div class="brand">ClearPipe</div><div class="deal">Client: SR Manufacturing · Deal Name: AI Modernisation · Sales Rep: Priya</div></div>
   </header>
-  <div class="note"><strong>Illustrative.</strong> The conversation is scripted. There is no live model or database. You play Priya by clicking the green replies.</div>
-  <!-- REP TAB -->
-  <section id="paneRep" role="tabpanel" aria-labelledby="tabRep">
-    <p class="webhint">The chat is on the left. The panel on the right is the rep's own picture of the deal. It fills in as they talk, so nothing has to be typed into a form. Click the green reply to send it as Priya.</p>
+  <div class="note"><strong>Working mock-up.</strong> The conversation is scripted, so this shows the experience, not the finished product. You play Priya by clicking the green replies and the cards.</div>
+  <section id="paneRep">
     <div class="stepbar" id="stepbarRep"></div>
     <div class="mobtabs" id="mobtabs">
       <button type="button" class="mobtab active" data-tab="chat" onclick="showMobTab('chat')">Conversation</button>
@@ -173,193 +293,362 @@
     </div>
     <div class="rep-web show-chat" id="repweb">
       <div class="webchat">
-        <div class="phone-head"><div><div class="who">ClearPipe</div><div class="sub">SR Manufacturing · AI Modernisation</div></div>
-          <span class="lockpill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>Private to you</span></div>
+        <div class="phone-head"><div><div class="who">Client: SR Manufacturing</div><div class="sub">Deal Name: AI Modernisation</div></div>
+          <div class="head-actions"><button type="button" class="update-deal" id="btnDeals" hidden onclick="openHome()">‹ Your deals</button><button type="button" class="lockpill" onclick="openPrivacy()" title="How your data is handled"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>Private until you share</button></div></div>
         <div class="chat" id="chat" aria-live="polite"></div>
         <div class="composer">
+          <div id="noteBox" class="notebox" hidden></div>
           <div class="replies" id="replies"></div>
           <div class="inputbar"><div class="mic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="3" width="6" height="12" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg></div><div class="fake">Type or talk</div></div>
         </div>
       </div>
       <aside class="picpanel" aria-label="Your deal picture">
         <div class="pichead"><div><h2>Your deal picture</h2><div class="sub">Builds itself from the chat. You can correct any line.</div></div>
-          <span class="lockpill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>Private</span></div>
+          <div class="head-actions"><button type="button" class="update-deal planned" data-share hidden onclick="openPlanned('share')">Share a summary<span class="ptag">Planned</span></button><button type="button" class="lockpill" onclick="openPrivacy()" title="How your data is handled"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>Private</button></div></div>
         <div id="pic"></div>
       </aside>
     </div>
+    <section class="home" id="homeView" hidden></section>
   </section>
 
-  </main>
+</main>
+<div class="overlay" id="privacyOverlay" hidden onclick="if(event.target===this)closePrivacy()">
+  <div class="sheet" role="dialog" aria-modal="true" aria-labelledby="privTitle">
+    <h2 id="privTitle">Your privacy promise</h2>
+    <div class="sub">In plain words. Draft: to be checked by a lawyer before real users enter real deals.</div>
+    <ol>
+      <li>What you tell ClearPipe about a deal is yours, and only you can see it.</li>
+      <li>Your employer sees nothing unless you press Share, and then only the summary you previewed.</li>
+      <li>We do not use your deal content to train AI models, and we never sell it.</li>
+      <li>You can use aliases instead of real names, and you can delete a deal, or your whole account, at any time.</li>
+      <li>If your company later buys ClearPipe, your earlier private deals stay private unless you choose to move them.</li>
+    </ol>
+    <div class="foot">Drafted to follow India’s Digital Personal Data Protection Act and Rules. Each permission is separate, you can withdraw it at any time, and you can ask for your data to be corrected or deleted. The full notice is drafted separately and is not part of this mock-up.</div>
+    <div class="actions"><button type="button" class="btn primary" onclick="closePrivacy()">Close</button></div>
+  </div>
+</div>
+<div class="overlay" id="sheetOverlay" hidden onclick="if(event.target===this)closeSheet()">
+  <div class="sheet" id="sheetBody" role="dialog" aria-modal="true"></div>
+</div>
 
 <script>
+const DEV=false;
+
 /* ===================== DATA ===================== */
 const T1 = "SR Manufacturing. The IT Head told me on 15 July that their planning and maintenance still run on Excel and old systems. He asked if AI could help. On 22 July he asked for an approach note. I sent it two days later. Nothing since. I got in through someone who knows their CEO.";
 
+const GAPS_A=["Who else is involved","Who decides and who pays","Other options, including doing nothing","Why now"];
+const GAPS_B=["Whether there is a team at all","Who else is involved","Who decides and who pays","Other options, including doing nothing"];
+const GAPS_C=["Who “the team” is","Whether anyone senior is behind it","When they will look at it","Whether the CEO knows about the note"];
+const GAPS_D=["What Rohit decides","Who signs off","Who pays","Other options being considered"];
+
 const STEPS = [
- /* 0 */ { rep:null,
+ /* 0 */ { label:"Opening question", divider:"First visit · Wed 5 Aug", rep:null,
    cp:[{t:"Hi Priya. Tell me about a deal that is on your mind. Say it the way you would tell a friend."}],
-   nodes:["plan","guard"],
-   log:["Priya opened ClearPipe. No deal is loaded yet.","The planner chose an open question. There is no form and no fields.","The guardrails checked the greeting before it was sent."],
-   decide:{chosen:"Ask one open question",why:"Nothing is known yet, so the rep should do the talking.",gaps:[]},
-   db:["review 1 created for SR Manufacturing (draft)","turn 1 saved (ClearPipe)"] },
- /* 1 */ { rep:{options:[{label:"Send by typing",text:T1,voice:false},{label:"Send as a voice note",text:T1,voice:true}]},
-   cp:[{t:"Let me check I understood."},{t:"On 15 July he told you that planning and maintenance still run on Excel and old systems. He asked if AI could help. On 22 July he asked for an approach note. You sent it on 24 July. Since then, 12 days with no reply. You came in through someone who knows their CEO."},{t:"Is that right?"}],
-   nodes:["cap","und","led","gap","plan","guard"],
-   log:["Input received. The raw words are saved exactly as the rep sent them.","The understand step pulled out five facts and dated them.","Each fact was graded: who started it, and whether it was done, said or believed.","The gap finder listed what is missing: who else is involved, who decides, who pays, other options, why now.","The planner chose to play the facts back first. Wrong facts would spoil everything after, so it waits for a yes."],
-   decide:{chosen:"Play back what was understood",why:"A yes from the rep makes the facts safe to use. Until then they stay in draft.",gaps:["Who else is involved","Who decides and who pays","Other options, including doing nothing","Why now"]},
-   db:["turn 2 saved (rep)","facts F1 to F5 saved (status: draft)","ai_call: understand (prompt v1, valid output)","ai_call: plan next turn"] },
- /* 2 */ { rep:{options:[{label:"Yes, that is right.",text:"Yes, that is right."}]},
-   cp:[{t:"Before I say anything, what do you think is going on?"}],
-   nodes:["led","plan","guard"],
-   log:["The rep confirmed the playback. Facts F1 to F5 moved from draft to confirmed.","Rule applied: ask for the rep's own view before showing any view of ClearPipe's own. This keeps belief apart from evidence.","Later, a gap between what the rep believes and what the evidence shows can become the a-ha."],
-   decide:{chosen:"Ask for the rep's own view",why:"Their view is stored apart from the evidence. It becomes something to test, not something to accept.",gaps:["Who else is involved","Who decides and who pays","Other options","Why now"]},
-   db:["facts F1 to F5 status changed to confirmed","turn 3 saved (ClearPipe)"] },
- /* 3 */ { rep:{options:[{label:"He is keen. But I am not sure anyone senior is behind it.",text:"He is keen. But I am not sure anyone senior is behind it."}]},
-   cp:[{t:"That matches what I see."},{t:"Can I try something? You know him better than I do, so tell me if I am wrong."},{t:"In his mind, he might be thinking: “I had an idea, so I asked for a note. It is only a note. I have not told my boss yet. I will tell him only if I have something strong to show.”",kind:"guess"},{t:"Does that sound like him?"}],
-   nodes:["led","gap","view","plan","guard"],
-   log:["The rep's view was saved as a belief. It is private and it is not evidence.","The belief has two parts. “He is keen” has some support: two buyer steps. “No senior owner” has no evidence either way.","The buyer's-view writer used only facts F1 and F2. Two lines could not be backed by a fact, so they are tagged as guesses.","The planner chose to ask, not tell. The rep can correct the guess in one line."],
-   decide:{chosen:"Show a labelled buyer's-view guess and ask if it sounds right",why:"The rep's reaction is easy to give and teaches ClearPipe more than a form field would.",gaps:["Has he told his boss? (guess A1)","Would he raise it only if he had something strong? (guess A2)","Who else is involved"]},
-   db:["fact F6 saved (rep belief, private)","guesses A1 and A2 saved (system, unchecked)","ai_call: buyer's view (prompt v1, valid output)","turn 4 saved (ClearPipe, tagged as a guess)"] },
- /* 4 */ { rep:{options:[{label:"Mostly. But I think his boss knows.",text:"Mostly. But I think his boss knows."}]},
-   cp:[{t:"Good to know. Why do you think so?"}],
-   nodes:["led","plan","guard"],
-   log:["The rep says the boss may already know. Guess A1, “has not told his boss”, is now challenged by the rep.","A1 is not deleted. It is marked as challenged, and stays visible.","The planner asked for the reason. A reason can become evidence. An opinion on its own cannot."],
-   decide:{chosen:"Ask why the rep thinks the boss knows",why:"The rep has already corrected the guess. What ClearPipe still needs is the reason behind the correction.",gaps:["Reason for “boss knows”","Who else is involved"]},
-   db:["guess A1 status changed to challenged (by rep)","turn 6 saved (ClearPipe)"] },
- /* 5 */ { rep:{options:[{label:"He said he would “check with the team”.",text:"He said he would “check with the team”."}]},
-   cp:[{t:"Then it may be more than a note to him."},{t:"I can think of two ways to find out. You could ask him who the team is. Or you could offer to explain the note to them yourself."},{t:"Which would you like to try?"}],
-   nodes:["led","gap","plan","guard"],
-   log:["The rep gave a reason. It is saved as F7: the buyer said he would check with the team. No date. Team not named.","Reliability is marked weak: no date, no names, and it reached ClearPipe second-hand.","The gap finder ranked “who is the team” first. It is the cheapest gap to close and the one most likely to change the picture.","The planner offered two ways to find out. The rep picks, so the rep stays in charge."],
-   decide:{chosen:"Offer two ways to find out who the team is",why:"It is the cheapest gap to close, and it would change the picture the most. The rep chooses.",gaps:["Who is “the team”","Has anyone senior agreed","When will they look at it"]},
-   db:["fact F7 saved (buyer said, undated, weak)","guess A1 linked to fact F7","turn 8 saved (ClearPipe)"] },
- /* 6 */ { rep:{options:[{label:"I will ask him who the team is.",text:"I will ask him who the team is."}]},
-   cp:[{t:"Good. When he answers, look for two things."},{t:"Does he give you a name? Does he say when they will look at it? A name and a date are a strong sign. “I will pass it on” with no name is a weak one."},{t:"I will ask you how it went next week."}],
-   card:{type:"stand"},
-   nodes:["plan","mem","guard"],
-   log:["The rep chose to ask who the team is. This is saved as an open loop, with what to watch for and a check-in date of 12 August.","Rule: a name plus a date from the buyer is a strong sign. “I will pass it on” alone is a weak one.","The deal read was written in plain words. The four pillar bands stay behind the scenes. The rep sees four plain questions.","Nothing in this reply is a forecast, a score or a close date."],
-   decide:{chosen:"Say what to watch for, and set a check-in",why:"This turns advice into something the rep can test and report back on. It is also what makes ClearPipe worth opening again.",gaps:["Who is “the team”","Has anyone senior agreed","When will they look at it"]},
-   db:["open_loop R1 saved (action: ask who the team is; watch for: a name and a date; check-in 12 Aug)","pillar snapshot saved for review 1","turn 10 saved (ClearPipe, with deal read)"] },
- /* 7 */ { divider:"One week later · Wed 12 Aug",
-   rep:{options:[{label:"Jump ahead one week",system:true}]},
-   cp:[{t:"Hi Priya. Last week you were going to ask the IT Head who “the team” is."},{t:"Did you get to ask?"}],
-   nodes:["mem","plan","guard"],
-   log:["The check-in date arrived. The memory part opened loop R1 and started the conversation.","The rep did not have to remember to come back. ClearPipe remembered.","Review 2 was created and copied forward from review 1, so nothing has to be typed in again."],
-   decide:{chosen:"Follow up on the open loop",why:"The next question is the one ClearPipe already promised to ask.",gaps:["Did the rep ask","What did the buyer answer"]},
-   db:["open_loop R1 opened by the scheduler","review 2 created, copied forward from review 1","turn 12 saved (ClearPipe)"] },
- /* 8 */ { rep:{options:[{label:"Yes. He said Rohit from plant operations will look at it on Friday.",text:"Yes. He said Rohit from plant operations will look at it on Friday."}]},
-   cp:[{t:"That is a good sign. He gave you a name and a day. Last week you had neither."},{t:"Do you know what Rohit's role is here?"}],
-   card:{type:"since"},
-   nodes:["cap","und","led","mem","guard"],
-   log:["The rep's answer was understood. Loop R1 is closed: what ClearPipe suggested, what the rep did, and what the buyer did.","Two new buyer facts: F8, the buyer named a colleague, and F9, the buyer set a day. Cost to the buyer is medium, because a colleague and a date are now on record.","Two pillars moved. Stakeholder Engagement went from Thin to Partial, because a second person was named by the buyer. Decision Readiness went from Unconfirmed to Thin, because a review day exists.","The planner asked what Rohit does. His authority will be graded from the rep's words."],
-   decide:{chosen:"Ask what Rohit does",why:"A name is not authority. His role has to be learned before it is counted.",gaps:["Rohit's role","Who signs","Who pays","Other options being considered"]},
-   db:["facts F8 and F9 saved (buyer act and buyer said, confirmed)","open_loop R1 closed (outcome: name and date given)","pillar snapshot saved for review 2","turn 14 saved (ClearPipe, with change since last week)"] },
- /* 9 */ { rep:{options:[{label:"He runs plant operations. I think he decides.",text:"He runs plant operations. I think he decides."}]},
-   cp:[{t:"Thanks. I will keep “Rohit decides” as your guess for now, not a fact."},{t:"One way to check: ask the IT Head, “Who usually signs off on something like this?”"},{t:"Do you want to try that before Friday?"}],
-   nodes:["led","plan","mem","guard"],
-   log:["The rep said Rohit runs plant operations and probably decides. Saved as F10, a rep belief, private.","Rule: a job title is not authority. “I think he decides” stays a guess until the buyer says who signs.","The planner offered one way to test it. No pillar band changed."],
-   decide:{chosen:"Offer one test for who signs",why:"This is the biggest gap left under Decision Readiness.",gaps:["Who signs","Who pays","Other options being considered"]},
-   db:["fact F10 saved (rep belief, private)","open_loop R2 offered (ask who signs off)","turn 16 saved (ClearPipe)"] }
+   gaps:[],
+   rec:["Session started by: the rep, self-opened. First visit, so no menu is shown.","Deal review 1 created for SR Manufacturing (draft)","Turn 1 saved (ClearPipe)"] },
+ /* 1 */ { label:"Playback and what stands out",
+   rep:{kind:"replies",options:[{label:"Send by typing",text:T1,voice:false},{label:"Send as a voice note",text:T1,voice:true}]},
+   cp:[{t:"Let me check I understood."},
+       {t:"On 15 July he told you that planning and maintenance still run on Excel and old systems, and he asked if AI could help. On 22 July he asked for an approach note. You sent it on 24 July. It has been 12 days with no reply. You came in through someone who knows their CEO."},
+       {t:"Both asks came from him alone. Nobody else at SR Manufacturing has shown up yet. Is that right?",kind:"stands"}],
+   gaps:GAPS_A,
+   rec:["Turn 2 saved: the rep’s words exactly as sent (a voice note is saved with its transcript)","Facts F1 to F5 saved as draft: each dated, each marked buyer did, buyer said or rep did","Observation O1 saved: only one buyer-side person so far, built from F1 to F4 only","Gap list saved: who else, who decides, who pays, other options, why now"] },
+ /* 2 */ { label:"Pick-first readings",
+   rep:{kind:"replies",options:[{label:"Yes, that is right.",text:"Yes, that is right."},{label:"Not quite",alt:true,note:"If Priya said “Not quite”, ClearPipe would ask what to correct. Nothing is used until the facts are right."}]},
+   cp:[{t:"Good. Before I say anything about this deal, which of these is closest to what you think is going on?"}],
+   gaps:GAPS_A,
+   rec:["Facts F1 to F5 and observation O1 confirmed by the rep","Readings shown saved: 4 cards, with the facts each one rests on","Turn 3 saved (ClearPipe)"] },
+ /* 3 */ { label:"Ask why (only if needed)",
+   rep:{kind:"cards",pick:1,
+     cards:[{t:"He is curious. It is still his own idea."},
+            {t:"His team is already talking about it."},
+            {t:"He is asking others for a note too."},
+            {t:"Another way to see it: his silence is about his calendar, not about you.",wild:true,body:"His silence is about his calendar, not about you."}],
+     links:[{label:"Not sure",note:"If Priya were not sure, ClearPipe would say plainly that the picture is open, and go to the cheapest gap to close."},
+            {label:"None of these",note:"ClearPipe would ask Priya to say it in her own words, by voice or typing."}],
+     other:"In this walk-through Priya picks “His team is already talking about it”. In the product, every card leads to its own read."},
+   cp:[{t:"That is possible. Nothing you have told me shows a team yet, though. What makes you think so?"}],
+   gaps:GAPS_B,
+   rec:["Rep’s reading B1 saved as a belief: “his team is already talking about it” (private, not evidence)","Pick saved: which of the 4 readings was chosen, and which were not","Match check: the facts back 0 of 1 claims in B1, so ClearPipe asks once for the reason"] },
+ /* 4 */ { label:"The read and one gap",
+   rep:{kind:"replies",options:[{label:"He said he would “check with the team”.",text:"He said he would “check with the team”."}]},
+   cp:[{t:"That helps. It is something he said, not something he did, and he named no one."},
+       {card:"read"},
+       {t:"The one thing that would change the picture most is who “the team” is. You could ask him, or offer to explain the note to them yourself. Which would you like to try first?"}],
+   gaps:GAPS_C,
+   rec:["Fact F6 saved: the buyer said he would check with the team (buyer said, no date, no names, weak). Source: the rep’s reason","Match check: B1 is now partly backed, by F6 only. B1 stays a belief","Read RD1 saved: what is backed, what is not, and the one gap: who “the team” is (cheapest to close, most likely to change the picture)","Route X1 saved: the CEO route, in reserve (not a step)","The two ways offered are saved, so the rep’s choice can be compared later"] },
+ /* 5 */ { label:"Next step agreed",
+   rep:{kind:"replies",options:[{label:"I will ask him who the team is.",text:"I will ask him who the team is."},{label:"I will offer to explain the note to the team.",alt:true,note:"This walk-through follows the first choice. The second would lead to its own next step."}]},
+   cp:[{t:"Good. I will remember that as your next step. When he answers, look for a name and a day. “I will pass it on” with no name is a weak sign."},
+       {t:"I will email you next week to ask how it went. You can change the timing below."}],
+   gaps:GAPS_C,
+   rec:["Commitment C1 saved: action, what to look for, check-in date, status Planned","The way chosen is saved (ask who the team is), and the one not chosen","Why-not slot on C1 created (empty)","Pillar snapshot P1 saved for review 1 (shown to the rep as the evidence chips)","Email reminder scheduled for the check-in date"] },
+ /* 6 */ { label:"Reminder email or deals list",
+   rep:{kind:"replies",options:[{label:"Open from the reminder email",system:true},{label:"Open ClearPipe yourself",system:true}]},
+   cp:[],
+   gaps:GAPS_C,
+   rec:["Session started by: the reminder email or the rep (logged, so we learn which one brings reps back)","Review 2 created, copied forward from review 1, so nothing is typed in again","Commitment C1 opened by the scheduler","If the rep opened ClearPipe herself: deals list shown, SR Manufacturing flagged “check-in due today”"] },
+ /* 7 */ { label:"Open the deal", skip:()=>choice.ret===0, divider:"One week later · Wed 12 Aug",
+   rep:{kind:"replies",options:[{label:"Open SR Manufacturing",system:true}]},
+   cp:[{t:"Hi Priya. What would you like to do with SR Manufacturing?"}],
+   gaps:GAPS_C,
+   rec:["Deal opened from the deals list (logged)","Menu shown: Add new info and See deal picture, plus two greyed options"] },
+ /* 8 */ { label:"Deal menu", skip:()=>choice.ret===0,
+   rep:{kind:"menu",pick:0,items:[
+     {label:"Add new info",sub:"Check-in due: who “the team” is",state:"scripted"},
+     {label:"See deal picture",sub:"Everything ClearPipe has on this deal",state:"live",note:"The deal picture is the panel on the right. On a phone it is the second tab."},
+     {label:"Deal history",sub:"Earlier reads and how each step went",state:"planned",key:"history"},
+     {label:"Prep for a call",sub:"Get ready for one call",state:"planned",key:"prep"},
+     {label:"Record a win or loss",sub:"How a deal ended",state:"planned",key:"winloss"}]},
+   cp:[{t:"What has happened since we last spoke? Last week you planned to ask the IT Head who “the team” is. Did you get to ask?"}],
+   gaps:GAPS_C,
+   rec:["Menu choice saved: Add new info","Check-in prompt built from the open commitment C1"] },
+ /* 9 */ { label:"Check-in read",
+   rep:{kind:"replies",options:[{label:"Yes. He said Rohit from plant operations will look at it on Friday.",text:"Yes. He said Rohit from plant operations will look at it on Friday."}]},
+   cp:[{t:"That is a good sign. He gave you a name and a day."},
+       {card:"since"},
+       {t:"A name is not the same as a decision-maker, and we do not yet know what Rohit decides. Would you ask the IT Head, “Who usually signs off on something like this?” before Friday?"}],
+   gaps:GAPS_D,
+   rec:["Rep’s answer understood. Commitment C1 closed: ClearPipe suggested it, the rep did it, the buyer named Rohit and a day","Facts F7 (buyer named a colleague) and F8 (buyer set a day) saved: buyer act and buyer said, confirmed","Belief B1 now backed by F6 and F7. It stays the rep’s belief, with the evidence linked","Pillar snapshot P2 saved: stakeholders from thin to partial, decision readiness from unconfirmed to thin (shown to the rep as the evidence chips)","Next step offered and saved: ask who signs off"] },
+ /* 10 */ { label:"Next step agreed",
+   rep:{kind:"replies",options:[{label:"Yes, I will ask him before Friday.",text:"Yes, I will ask him before Friday."}]},
+   cp:[{t:"Good. I will remember that as your next step."},
+       {t:"Look for a name and a next step. “We will see” is a weak sign."},
+       {t:"I will email you on Friday morning, before Rohit’s review."}],
+   gaps:GAPS_D,
+   rec:["Commitment C2 saved: ask who signs off; look for a name and a next step; reminder Fri 14 Aug","History on file for this rep: C1 done, C2 planned. Patterns start after about three closed loops, from this rep’s own deals only"] }
 ];
 
 /* ===================== STATE ===================== */
-let n=0, busy=false, mobTab='chat'; const choice={voice:false};
+let n=0, busy=false, mobTab='chat', homeOpen=false;
+const choice={voice:false,ret:0};
+function freshState(){return{
+  C1:{id:'C1',action:'Ask the IT Head who “the team” is',watch:'A name, and a day when they will look at it',checkIn:'Next week · Wed 12 Aug',customDate:'',status:'Planned',outcome:null,why:null,whyOpen:false},
+  C2:{id:'C2',action:'Ask the IT Head who signs off',watch:'A name and a next step',checkIn:'Fri 14 Aug · before Rohit’s review',status:'Planned',outcome:null,why:null,whyOpen:false},
+  feedback:{read1:{answer:null,note:''},read2:{answer:null,note:''}},
+  events:[],trackedSteps:new Set()
+}}
+let S=freshState();
+let devKind=null;
+
 const $=id=>document.getElementById(id);
 const sleep=ms=>new Promise(r=>setTimeout(r,ms));
-const ICON_LOCK='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>';
 const ICON_MIC='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="3" width="6" height="12" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg>';
 const ICON_PLAY='<svg viewBox="0 0 24 24" fill="currentColor"><path d="M7 4l13 8-13 8z"/></svg>';
-const esc=s=>String(s).replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+function htmlEl(html){const w=document.createElement('div');w.innerHTML=html.trim();return w.firstElementChild}
 
-/* ===================== REP CARDS ===================== */
-function cardHTML(c){
-  if(c.type==="stand") return `<div class="card"><h3>Where things stand</h3>
-   <div class="row"><b>Clear so far</b><ul><li>He told you about a real problem.</li><li>He asked for the note himself.</li></ul></div>
-   <div class="row"><b>Not clear yet</b><ul><li>Who else is involved.</li><li>Whether anyone senior has agreed.</li><li>When they will look at it.</li></ul></div>
+/* Prototype-only analytics: no chat text, buyer names, belief text or notes are stored.
+   A real build would persist these per deal and review, and record consented, privacy-safe events. */
+const STEP_EVENTS={1:['deal_started'],2:['playback_confirmed'],3:['reading_picked'],4:['reason_given','diagnosis_reached','action_offered'],5:['action_accepted'],7:['deal_opened_from_list'],8:['menu_choice'],9:['action_executed','buyer_evidence_returned','diagnosis_changed','next_action_offered'],10:['action_accepted']};
+function eventExtra(k,event){
+  if(event==='reading_picked') return {card:2,backed:'none'};
+  if(event==='reason_given') return {backed:'partly'};
+  if(event==='menu_choice') return {choice:'add_new_info'};
+  if(event==='action_accepted') return {actionId:k===5?'C1':'C2'};
+  if(event==='action_executed') return {actionId:'C1'};
+  if(event==='next_action_offered') return {actionId:'C2'};
+  return {};
+}
+function track(name,extra={}){
+  S.events.push({event:name,at:new Date().toISOString(),dealId:'demo-deal-1',review:n>=6?2:1,...extra});
+  if(DEV) refreshDev();
+}
+window.clearPipeDemo={get events(){return S.events.map(x=>({...x}))},get commitments(){return {C1:{...S.C1},C2:{...S.C2}}}};
+
+/* ===================== STEP LOGIC ===================== */
+function active(k){const s=STEPS[k];return !(s.skip&&s.skip())}
+function nextActive(from){for(let k=from+1;k<STEPS.length;k++) if(active(k)) return k; return null}
+function prevActive(from){for(let k=from-1;k>=0;k--) if(active(k)) return k; return null}
+function activeList(){return STEPS.map((_,i)=>i).filter(active)}
+function defaultIndex(k){const r=STEPS[k].rep;if(!r) return 0;if(r.kind==='cards'||r.kind==='menu') return r.pick;return 0}
+
+function presentedStep(k){
+  const s=STEPS[k];
+  if(k===6){
+    if(choice.ret===0) return {...s,screen:'deal',divider:'One week later · Wed 12 Aug',
+      rem:{time:'9:00 am',subject:'Did you get to ask who “the team” is?',text:'Hi Priya. Last week you planned to ask the IT Head who “the team” is. Tap below to tell ClearPipe how it went.'},
+      cp:[{t:'Hi Priya. Did you get to ask?'}]};
+    return {...s,screen:'home',cp:[]};
+  }
+  return {screen:'deal',...s};
+}
+
+/* ===================== CARDS IN THE CHAT ===================== */
+function cardHTML(type){
+  if(type==='read') return `<div class="card"><h3>How the evidence reads</h3>
+   <div class="row"><b>Your reading</b>His team is already talking about it.</div>
+   <div class="row"><b>Backed so far</b><ul><li>He asked twice, and both asks were his (15 and 22 July).</li><li>He said he would check with the team.</li></ul></div>
+   <div class="row"><b>Not backed yet</b><ul><li>Who “the team” is.</li><li>That anyone else has seen the note.</li><li>That anyone senior is behind it.</li></ul></div>
    <details><summary>How I got here</summary><dl>
     <dt>Is the buyer moving things forward?</dt><dd>A little. He has asked twice, but both asks are small.</dd>
     <dt>Are the right people involved?</dt><dd>Only one person so far.</dd>
     <dt>Do we know how they will decide?</dt><dd>Not yet.</dd>
-    <dt>Are we ahead of other options?</dt><dd>We do not know. Nobody has said.</dd></dl></details></div>`;
+    <dt>Are we ahead of other options?</dt><dd>We do not know. Nobody has said.</dd>
+    <dt>Kept in reserve</dt><dd>You came in through someone who knows their CEO. Nothing says the CEO has heard about the note. Use that route only if he cannot name anyone senior.</dd></dl></details></div>`;
   return `<div class="card"><h3>Since last week</h3>
-   <div class="row"><b>New</b><ul><li>He named a colleague, Rohit.</li><li>He set a day, Friday.</li></ul></div>
-   <div class="row"><b>Still not known</b><ul><li>Who signs off.</li><li>Who pays.</li><li>Whether SR Manufacturing looked at anyone else.</li></ul></div></div>`;
+   <div class="row"><b>New</b>He named a colleague, Rohit, and set a day, Friday.</div>
+   <div class="row" style="margin:0"><b>Still not known</b>Who signs off. Who pays. Whether SR Manufacturing looked at anyone else.</div></div>`;
 }
 
-/* ===================== REP RENDER ===================== */
+const CHECKINS=['Next week · Wed 12 Aug','Before Friday','Next meeting','Another date'];
+const WHYS=['Not the right time','I do not agree with it','Something else is more urgent','Something else'];
+function commitHTML(id){
+  const c=S[id];
+  const editable=id==='C1'&&c.status==='Planned';
+  const when=editable
+    ?`<select aria-label="Check-in timing" onchange="setCheckIn(this.value)">${CHECKINS.map(o=>`<option value="${esc(o)}" ${c.checkIn===o?'selected':''}>${esc(o)}</option>`).join('')}</select>${c.checkIn==='Another date'?`<input type="date" aria-label="Choose check-in date" value="${esc(c.customDate)}" onchange="setCustomDate(this.value)">`:''}`
+    :esc(c.checkIn==='Another date'&&c.customDate?c.customDate:c.checkIn);
+  const why=c.whyOpen&&c.status==='Planned'?`<div class="whynot"><div class="tap-q">What is on your mind?</div><div class="feedback-options">${WHYS.map(w=>`<button type="button" aria-pressed="${c.why===w}" onclick="setWhy('${id}','${esc(w)}')">${esc(w)}</button>`).join('')}</div>${c.why?'<div class="resp">Thanks. I will keep this on file, and ask about it at the check-in. What would you rather do instead?</div>':''}</div>`:'';
+  return `<div class="commit-card" data-commit="${id}"><h3>Your agreed next step</h3>
+    <div class="commit-row"><b>Action</b><span>${esc(c.action)}</span></div>
+    <div class="commit-row"><b>Look for</b><span>${esc(c.watch)}</span></div>
+    <div class="commit-row"><b>Check-in</b><span>${when}</span></div>
+    <div class="commit-row"><b>Reminder</b><span>An email, on the day</span></div>
+    <div class="commit-row"><b>Status</b><span>${esc(c.status)}${c.outcome?` · ${esc(c.outcome)}`:''}</span></div>
+    ${c.status==='Planned'?`<div class="commit-row"><b></b><span><button type="button" class="linkbtn whylink" onclick="toggleWhy('${id}')">Not going to do this? Tell me why</button></span></div>`:''}${why}
+    <p class="commit-note">Private to you. You can come back as soon as anything changes.</p></div>`;
+}
+function feedbackHTML(key){
+  const f=S.feedback[key];
+  return `<div class="feedback-card" data-feedback-card="${key}"><h3>Did this change how you’re thinking about this deal?</h3>
+    <div class="feedback-options">${['Yes','A little','Not really'].map(a=>`<button type="button" aria-pressed="${f.answer===a}" onclick="setFeedback('${key}','${a}')">${a}</button>`).join('')}</div>
+    ${f.answer==='Not really'?`<div class="feedback-followup"><label for="feedbackNote-${key}">What did I miss? <span class="commit-note">Optional</span></label><textarea id="feedbackNote-${key}" placeholder="Tell me in your own words">${esc(f.note)}</textarea><button type="button" class="btn" onclick="saveFeedbackNote('${key}')">Save note</button></div>`:''}
+    ${f.answer?'<p class="commit-note">Thanks. This helps ClearPipe learn; it does not change the deal evidence.</p>':''}</div>`;
+}
+function stepExtras(k){
+  if(k===5) return DEV?[htmlEl(commitHTML('C1')),htmlEl(feedbackHTML('read1'))]:[htmlEl(commitHTML('C1'))];
+  if(k===10) return DEV?[htmlEl(commitHTML('C2')),htmlEl(feedbackHTML('read2'))]:[htmlEl(commitHTML('C2'))];
+  return [];
+}
+function replaceCard(sel,html){const el=document.querySelector(sel);if(el) el.replaceWith(htmlEl(html))}
+function refreshCommit(id){replaceCard(`[data-commit="${id}"]`,commitHTML(id));renderPicture()}
+function setCheckIn(v){S.C1.checkIn=v;if(v!=='Another date') S.C1.customDate='';track('check_in_set',{timing:v});refreshCommit('C1')}
+function setCustomDate(v){S.C1.customDate=v;track('check_in_set',{timing:'Another date'});refreshCommit('C1')}
+function toggleWhy(id){S[id].whyOpen=!S[id].whyOpen;refreshCommit(id)}
+function setWhy(id,w){S[id].why=S[id].why===w?null:w;track('commit_why_not',{actionId:id,reason:S[id].why||'cleared'});refreshCommit(id)}
+function setFeedback(key,answer){
+  const f=S.feedback[key];f.answer=answer;if(answer!=='Not really') f.note='';
+  track('aha_feedback',{answer,read:key});replaceCard(`[data-feedback-card="${key}"]`,feedbackHTML(key));scrollChat();
+}
+function saveFeedbackNote(key){
+  const field=$('feedbackNote-'+key);S.feedback[key].note=field?field.value.trim():'';
+  replaceCard(`[data-feedback-card="${key}"]`,feedbackHTML(key));scrollChat();
+}
+
+/* ===================== CHAT RENDER ===================== */
 function repBubble(k){
-  const s=STEPS[k]; if(!s.rep||s.rep.options[0].system) return null;
-  const opt=k===1?(choice.voice?s.rep.options[1]:s.rep.options[0]):s.rep.options[0];
+  const r=STEPS[k].rep; if(!r) return null;
+  let text=null,opt=null;
+  if(r.kind==='replies'){
+    opt=k===1?(choice.voice?r.options[1]:r.options[0]):r.options[0];
+    if(opt.system) return null; text=opt.text;
+  } else if(r.kind==='cards') text=r.cards[r.pick].t;
+  else if(r.kind==='menu') text=r.items[r.pick].label;
   const d=document.createElement('div'); d.className='msg rep';
-  if(k===1&&opt.voice){
+  if(k===1&&opt&&opt.voice){
     const bars=[8,14,10,18,12,20,9,16,13,19,8,15,11,17,10,14,9,12].map(h=>`<i style="height:${h}px"></i>`).join('');
-    d.innerHTML=`<div class="voice"><span class="play">${ICON_PLAY}</span><span class="wave">${bars}</span><span class="len">0:31</span></div><div class="transcript"><b>Transcript</b> (tap to fix any word)<br>${esc(opt.text)}</div>`;
-  } else d.textContent=opt.text;
+    d.innerHTML=`<div class="voice"><span class="play">${ICON_PLAY}</span><span class="wave">${bars}</span><span class="len">0:31</span></div><div class="transcript"><b>Transcript</b> (tap to fix any word)<br>${esc(text)}</div>`;
+  } else d.textContent=text;
   return d;
 }
 function cpBubble(m){
-  const d=document.createElement('div'); d.className='msg cp'+(m.kind==='guess'?' guess':'');
-  d.innerHTML=(m.kind==='guess'?'<span class="tag">A guess, not a fact</span><br>':'')+esc(m.t);
+  const d=document.createElement('div'); d.className='msg cp'+(m.kind==='stands'?' stands':'');
+  d.innerHTML=(m.kind==='stands'?'<span class="tag blue">One thing stands out</span><br>':'')+esc(m.t);
   return d;
 }
-function cardEl(c){const w=document.createElement('div');w.innerHTML=cardHTML(c);return w.firstElementChild}
+function cardEl(type){return htmlEl(cardHTML(type))}
 function dividerEl(t){const d=document.createElement('div');d.className='divider';d.textContent=t;return d}
+function remEl(w){const d=document.createElement('div');d.className='rem';d.innerHTML=`<div class="from">Reminder email · ClearPipe<span>${esc(w.time)}</span></div><div class="subj">${esc(w.subject)}</div><div>${esc(w.text)}</div><div class="rem-row"><span class="rem-btn">Open ClearPipe</span></div>`;return d}
 function scrollChat(){const c=$('chat');c.scrollTop=c.scrollHeight}
 function fillStep(chat,k){
-  const s=STEPS[k];
+  const s=presentedStep(k);
   if(s.divider) chat.appendChild(dividerEl(s.divider));
+  if(s.rem) chat.appendChild(remEl(s.rem));
   const rb=repBubble(k); if(rb) chat.appendChild(rb);
-  s.cp.forEach(m=>chat.appendChild(cpBubble(m)));
-  if(s.card) chat.appendChild(cardEl(s.card));
+  s.cp.forEach(m=>chat.appendChild(m.card?cardEl(m.card):cpBubble(m)));
+  stepExtras(k).forEach(e=>chat.appendChild(e));
 }
-function renderChatStatic(){const chat=$('chat');chat.innerHTML='';for(let k=0;k<=n;k++)fillStep(chat,k);scrollChat()}
+function renderChatStatic(){
+  const chat=$('chat');chat.innerHTML='';
+  activeList().filter(k=>k<=n).forEach(k=>fillStep(chat,k));
+  scrollChat();
+}
 async function animateStep(k){
-  const chat=$('chat'),s=STEPS[k];
+  const chat=$('chat'),s=presentedStep(k);
   if(s.divider){chat.appendChild(dividerEl(s.divider));await sleep(300)}
+  if(s.rem){chat.appendChild(remEl(s.rem));scrollChat();await sleep(500)}
   const rb=repBubble(k); if(rb){chat.appendChild(rb);scrollChat()}
   for(const m of s.cp){
+    if(m.card){await sleep(300);chat.appendChild(cardEl(m.card));scrollChat();continue}
     const ty=document.createElement('div');ty.className='typing';ty.innerHTML='<i></i><i></i><i></i>';chat.appendChild(ty);scrollChat();
     await sleep(650+Math.min(700,m.t.length*4));
     ty.remove();chat.appendChild(cpBubble(m));scrollChat();
   }
-  if(s.card){await sleep(300);chat.appendChild(cardEl(s.card));scrollChat()}
+  const ex=stepExtras(k);
+  if(ex.length){await sleep(250);ex.forEach(e=>chat.appendChild(e));scrollChat()}
+}
+
+/* ===================== COMPOSER: replies, cards, menu ===================== */
+function showNote(t){const b=$('noteBox');b.textContent=t;b.hidden=false}
+function hideNote(){const b=$('noteBox');if(b){b.hidden=true;b.textContent=''}}
+function cardsHTML(r){
+  return `<div class="pickwrap"><div class="hint">Tap one</div>
+   <div class="pickcards">${r.cards.map((c,i)=>`<button type="button" class="pickcard${c.wild?' wild':''}" onclick="pickCard(${i})">${c.wild?'<span class="wtag">Another way to see it</span>'+esc(c.body):esc(c.t)}</button>`).join('')}</div>
+   <div class="quietlinks">${r.links.map((l,j)=>`<button type="button" class="linkbtn" onclick="pickLink(${j})">${esc(l.label)}</button>`).join('')}</div>
+   <p class="caption">These are readings, not scores. Tap the one closest to your gut.</p></div>`;
+}
+function menuHTML(r){
+  return `<div class="pickwrap"><div class="hint">Tap to choose</div><div class="menu">${r.items.map((it,j)=>`<button type="button" class="menuitem${it.state==='planned'?' planned':''}" onclick="pickMenu(${j})"><b>${esc(it.label)}${it.state==='planned'?'<span class="ptag">Planned</span>':''}</b><span class="s">${esc(it.sub)}</span></button>`).join('')}</div></div>`;
+}
+function pickCard(i){const k=nextActive(n),r=STEPS[k].rep;if(i===r.pick) advance(i);else showNote(r.other)}
+function pickLink(j){const k=nextActive(n),r=STEPS[k].rep;showNote(r.links[j].note)}
+function pickMenu(j){
+  const k=nextActive(n),it=STEPS[k].rep.items[j];
+  if(it.state==='scripted') advance(j);
+  else if(it.state==='planned') openPlanned(it.key);
+  else{track('see_picture_opened');showNote(it.note);showMobTab('pic')}
 }
 function renderReplies(){
-  const box=$('replies');box.innerHTML='';
+  const box=$('replies');box.innerHTML='';hideNote();
   if(busy) return;
-  const next=STEPS[n+1];
-
-if(!next){
-  box.innerHTML=`<div style="background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:14px;margin-top:8px;font-size:13px;color:var(--ink);">
-    <div style="font-weight:720;margin-bottom:4px;color:var(--ink);">Want to run a live, stalled deal through this framework?</div>
-    <div style="color:var(--muted);font-size:12px;line-height:1.4;margin-bottom:10px;">Designed for enterprise tech leaders navigating 6–18 month sales cycles in Indian B2B.</div>
-    <a href="mailto:shankar@growthstratex.com?subject=ClearPipe%20Live%20Deal%20Walkthrough" style="display:inline-block;background:var(--ink);color:#fff;text-decoration:none;padding:7px 14px;border-radius:6px;font-weight:650;font-size:12px;">Drop a note to Shankar &rarr;</a>
-  </div>`;
-  return;
-}
-  const h=document.createElement('div');h.className='hint';h.textContent=next.rep.options[0].system?'Tap to continue':'Tap to send as Priya';box.appendChild(h);
-  next.rep.options.forEach((o,i)=>{
+  const k=nextActive(n);
+  if(k===null){
+    box.innerHTML=DEV
+      ?'<div class="endnote">End of the walk-through. Use Restart to run it again.</div>'
+      :`<div class="endcta"><div class="endcta-h">Want to run a live, stalled deal through this framework?</div><div class="endcta-s">Designed for enterprise tech leaders navigating 6 to 18 month sales cycles in Indian B2B.</div><a class="endcta-a" href="mailto:shankar@growthstratex.com?subject=ClearPipe%20Live%20Deal%20Walkthrough">Drop a note to Shankar &rarr;</a></div>`;
+    return}
+  const r=STEPS[k].rep;
+  if(r.kind==='cards'){box.appendChild(htmlEl(cardsHTML(r)));return}
+  if(r.kind==='menu'){box.appendChild(htmlEl(menuHTML(r)));return}
+  const h=document.createElement('div');h.className='hint';h.textContent=r.options[0].system?'Tap to continue':'Tap to send as Priya';box.appendChild(h);
+  r.options.forEach((o,i)=>{
     const b=document.createElement('button');b.className='reply';b.type='button';
     b.innerHTML=(o.voice?ICON_MIC:'')+esc(o.label);
-    b.onclick=()=>advance(i);box.appendChild(b);
+    b.onclick=()=>{if(o.alt) showNote(o.note); else advance(i)};
+    box.appendChild(b);
   });
 }
 function renderStepbars(){
-  const dots=Array.from({length:STEPS.length},(_,i)=>`<i class="${i<=n?'on':''}"></i>`).join('');
-  const html=`<span class="count">Step ${n+1} of ${STEPS.length}</span><span class="dots">${dots}</span>
-    <button class="btn" type="button" onclick="back()" ${n===0||busy?'disabled':''}>Back</button>
+  const list=activeList(),pos=list.indexOf(n)+1;
+  const dots=list.map((k,i)=>`<i class="${i<pos?'on':''}"></i>`).join('');
+  const noBack=prevActive(n)===null||busy,noNext=nextActive(n)===null||busy||homeOpen;
+  $('stepbarRep').innerHTML=`<span class="count">Step ${pos} of ${list.length}</span><span class="dots">${dots}</span>
+    <button class="btn" type="button" onclick="back()" ${noBack?'disabled':''}>Back</button>
     <button class="btn" type="button" onclick="restart()">Restart</button>
-    ${'<button class="btn primary" type="button" onclick="advance(0)" '+((n>=STEPS.length-1||busy)?'disabled':'')+'>Next step</button>'}`;
-  $('stepbarRep').innerHTML=html;
+    <button class="btn primary" type="button" onclick="advance()" ${noNext?'disabled':''}>Next step</button>`;
 }
 
-/* ===================== DEAL PICTURE (rep side, web) ===================== */
+/* ===================== DEAL PICTURE ===================== */
 const PIC_CONFIRMED=[
  {t:"15 Jul: He told you Excel and old systems are holding them back.",from:1,ok:2},
  {t:"22 Jul: He asked for an approach note.",from:1,ok:2},
  {t:"24 Jul: You sent it. No reply for 12 days.",from:1,ok:2},
  {t:"You came in through a referral.",from:1,ok:2},
- {t:"12 Aug: He named a colleague, Rohit, from plant operations.",from:8,ok:8},
- {t:"He said Rohit will look at it on Friday.",from:8,ok:8}
+ {t:"He said he would “check with the team”. No names or dates yet.",from:4,ok:4},
+ {t:"12 Aug: He named a colleague, Rohit, from plant operations.",from:9,ok:9},
+ {t:"He said Rohit will look at it on Friday.",from:9,ok:9}
 ];
 function picCard(type,mark,title,items){
   return `<div class="pic-card ${type}"><h3>${esc(title)}<span class="count">${items.length}</span></h3>
@@ -368,47 +657,51 @@ function picCard(type,mark,title,items){
 function renderPicture(){
   const el=$('pic'); if(!el) return;
   if(n===0){el.innerHTML='<p class="picempty">Nothing here yet. Tell ClearPipe about a deal and this panel will fill in.</p>';return}
-
   const cards=[];
 
   const conf=PIC_CONFIRMED.filter(x=>x.from<=n);
-  if(conf.length){
-    const items=conf.map(x=>x.ok<=n?esc(x.t):esc(x.t)+' <em>(waiting for your yes)</em>');
-    cards.push(picCard('confirmed','✓','What we know',items));
-  }
+  if(conf.length) cards.push(picCard('confirmed','✓','What we know',conf.map(x=>x.ok<=n?esc(x.t):esc(x.t)+' <em>(waiting for your yes)</em>')));
 
-  const gaps=STEPS[n].decide.gaps;
+  const gaps=STEPS[n].gaps;
   if(gaps.length&&n>=1) cards.push(picCard('gap','?','Not known yet',gaps.map(esc)));
 
-  const mine=[];
-  if(n>=3) mine.push('He is keen. Not sure anyone senior is behind it.');
-  if(n>=4) mine.push('You think his boss already knows.');
-  if(n>=9) mine.push('You think Rohit decides.');
-  if(mine.length) cards.push(picCard('mine','•','Your own view',mine.map(esc)));
+  if(n>=3) cards.push(picCard('mine','•','Your own view',[n>=9?'You think his team is already talking about it. He has now named Rohit.':'You think his team is already talking about it.']));
 
-  if(n>=3){
-    const guesses=[n>=4?'He has not told his boss yet. (you said no)':'He has not told his boss yet.','He will raise it only if he has something strong.'];
-    cards.push(picCard('mine','~',"ClearPipe's View",guesses.map(esc)));
+  if(n>=4){
+    const backed=n>=9
+      ?['He asked twice, and both asks were his.','He said he would check with the team.','He named Rohit and a day.']
+      :['He asked twice, and both asks were his.','He said he would check with the team.'];
+    const notBacked=n>=9
+      ?['That anyone senior is behind it.','Who signs off.']
+      :['Who “the team” is.','That anyone else has seen the note.','That anyone senior is behind it.'];
+    cards.push(`<div class="pic-card mine"><h3>ClearPipe’s View<span class="count">${backed.length+notBacked.length}</span></h3><ul>${backed.map(t=>`<li><span class="m">✓</span><span>${esc(t)}</span></li>`).join('')}${notBacked.map(t=>`<li><span class="m">?</span><span>${esc(t)}</span></li>`).join('')}</ul></div>`);
+  }
+
+  if(n>=4){
+    const B=n>=9?{mo:'Partial',sp:'Unconfirmed',dr:'Thin',se:'Partial'}:{mo:'Partial',sp:'Unconfirmed',dr:'Unconfirmed',se:'Thin'};
+    const chip=(l,b)=>`<div class="glance-chip"><span>${l}</span><span class="band ${b.toLowerCase()}">${b}</span></div>`;
+    cards.push(`<div class="pic-card glance"><h3>Evidence at a glance</h3><div class="glance-grid">${chip('Buying Momentum',B.mo)}${chip('Seller Position',B.sp)}${chip('Decision Readiness',B.dr)}${chip('Stakeholder Engagement',B.se)}</div><p class="glance-note">Not a prediction of the outcome, just what’s actually been established so far.</p><dl class="glance-legend"><div><dt>Well Evidenced:</dt><dd>Confirmed by something the buyer actually did or said.</dd></div><div><dt>Partial:</dt><dd>Some support, with gaps.</dd></div><div><dt>Thin:</dt><dd>Very little to go on.</dd></div><div><dt>Unconfirmed:</dt><dd>Nothing established yet.</dd></div></dl></div>`);
   }
 
   const lp=[];
-  if(n===6) lp.push('Ask him who “the team” is. Look for a name and a day. (check-in 12 Aug)');
-  if(n===7) lp.push('Ask him who “the team” is. (due today)');
-  if(n>=8) lp.push('Asked who “the team” is. He named Rohit and a day. (done)');
-  if(n>=9) lp.push('Ask who signs off. (your choice)');
-  if(lp.length) cards.push(picCard('next','→','Suggested Next Step',lp.map(esc)));
+  if(n===4) lp.push('Suggested: ask him who “the team” is, or offer to explain the note to them.');
+  if(n>=5){
+    const c1=S.C1;
+    lp.push(`<span class="loop-status${c1.status==='Done'?' done':''}">${esc(c1.status)}</span>${esc(c1.action)}${c1.status==='Done'?'. '+esc(c1.outcome)+'.':' · check-in '+esc(c1.checkIn==='Another date'&&c1.customDate?c1.customDate:c1.checkIn)}`);
+  }
+  if(n===9) lp.push('Suggested: ask the IT Head who signs off, before Friday.');
+  if(n>=10) lp.push(`<span class="loop-status">${esc(S.C2.status)}</span>${esc(S.C2.action)} · ${esc(S.C2.checkIn)}`);
+  if(lp.length) cards.push(`<div class="pic-card next"><h3>${n>=5?'Your next steps':'Suggested next step'}<span class="count">${lp.length}</span></h3><ul>${lp.map(t=>`<li><span class="m">→</span><span>${t}</span></li>`).join('')}</ul></div>`);
 
   const lf=[];
-  if(n===6||n===7) lf.push({m:'▲',t:'Strong sign: a name and a date from him.'},{m:'▽',t:'Weak sign: “I will pass it on” with no name.'});
-  if(n>=9) lf.push({m:'▲',t:'Strong sign: a named signer with a clear next step.'},{m:'▽',t:'Weak sign: a vague “I will check.”'});
-  if(lf.length) cards.push(`<div class="pic-card next"><h3>What to Look For<span class="count">${lf.length}</span></h3><ul>${lf.map(i=>`<li><span class="m">${i.m}</span><span>${esc(i.t)}</span></li>`).join('')}</ul></div>`);
+  if(n>=5&&n<9) lf.push({m:'▲',t:'Strong sign: a name and a date from him.'},{m:'▽',t:'Weak sign: “I will pass it on” with no name.'});
+  if(n>=9) lf.push({m:'▲',t:'Strong sign: a named signer with a clear next step.'},{m:'▽',t:'Weak sign: “We will see.”'});
+  if(lf.length) cards.push(`<div class="pic-card next"><h3>What to look for<span class="count">${lf.length}</span></h3><ul>${lf.map(i=>`<li><span class="m">${i.m}</span><span>${esc(i.t)}</span></li>`).join('')}</ul></div>`);
 
-  const banner=n>=8?'<div class="pic-banner">Since last week: two new things from the buyer, a named colleague and a day. Still not known: who signs, who pays, other options.</div>':'';
-
+  const banner=n>=9?'<div class="pic-banner">Since last week: two new things from the buyer, a named colleague and a day. Still not known: who signs, who pays, other options.</div>':'';
   el.innerHTML=`<div class="pic-body">${banner}<div class="pic-grid">${cards.join('')}</div></div>`;
-
   const dot=$('picdot');
-  if(dot) dot.hidden = !(n>=1 && mobTab!=='pic');
+  if(dot) dot.hidden=!(n>=1&&mobTab!=='pic');
 }
 function showMobTab(t){
   mobTab=t;
@@ -418,34 +711,144 @@ function showMobTab(t){
   const dot=$('picdot'); if(dot&&t==='pic') dot.hidden=true;
 }
 
-/* ===================== ACTIONS ===================== */
-function renderAll(){renderStepbars();renderReplies();renderPicture()}
-async function advance(i){
-  if(busy||n>=STEPS.length-1) return;
-  const k=n+1;
-  if(k===1) choice.voice=!!STEPS[1].rep.options[i||0].voice;
-  busy=true;n=k;renderStepbars();renderReplies();renderPicture();
-  await animateStep(k);
-  busy=false;renderStepbars();renderReplies();
-  scrollChat();
+/* ===================== HOME: DEALS LIST ===================== */
+function renderHome(){
+  const due=n>=6;
+  let srLine,srPill;
+  if(n<5){srLine='Updated just now · No next step yet';srPill='<span class="pill">In progress</span>'}
+  else if(n<6){srLine='Updated just now · Next step: ask who “the team” is';srPill='<span class="pill">Check-in Wed 12 Aug</span>'}
+  else if(n<10){srLine=n>=9?'Updated just now · Suggested next step: ask who signs off':'Updated 7 days ago · Next step: ask who “the team” is';srPill=n>=9?'<span class="pill">Check-in pending</span>':'<span class="pill due">Check-in due today</span>'}
+  else{srLine='Updated just now · Next step: ask who signs off';srPill='<span class="pill">Check-in Fri 14 Aug</span>'}
+  $('homeView').innerHTML=`<div class="home-head"><div><h2>Your deals</h2><div class="sub">Private to you. Only you can see these.</div></div><button type="button" class="update-deal" onclick="homeNote('Adding a deal opens the same first conversation you saw in the walk-through: “Tell me about a deal that is on your mind.”')">+ Add a new deal</button></div>
+   <div class="deal-list">
+    <button type="button" class="deal-row" onclick="homeOpenDeal()"><div><div class="nm">SR Manufacturing <span>· AI Modernisation</span></div><div class="ln">${srLine}</div></div>${srPill}</button>
+    <button type="button" class="deal-row" onclick="homeNote('Kaveri Textiles is an illustrative deal. This walk-through follows SR Manufacturing.')"><div><div class="nm">Kaveri Textiles <span>· Planning rollout</span></div><div class="ln">Updated 2 days ago · Next step: send the revised scope (Fri)</div></div></button>
+    <button type="button" class="deal-row" onclick="homeNote('Meridian Logistics is an illustrative deal. This walk-through follows SR Manufacturing.')"><div><div class="nm">Meridian Logistics <span>· Annual renewal</span></div><div class="ln">Updated 9 days ago · No next step yet</div></div><span class="pill due">No next step</span></button>
+   </div>
+   <div id="homeNote" class="homenote" hidden></div>
+   <p class="home-foot">No stages, scores or forecasts here. Each deal shows what happened last and what you planned to do next.</p>`;
 }
-function back(){if(busy||n===0)return;n--;renderChatStatic();renderAll();scrollChat()}
-function restart(){if(busy)return;n=0;choice.voice=false;renderChatStatic();renderAll();scrollChat()}
+function homeNote(t){const b=$('homeNote');if(b){b.textContent=t;b.hidden=false}}
+function openHome(){if(busy||n<1) return;homeOpen=true;track('deals_list_opened');renderAll()}
+function closeHome(){homeOpen=false;renderAll();scrollChat()}
+function homeOpenDeal(){
+  if(homeOpen){closeHome();return}
+  if(presentedStep(n).screen==='home') advance();
+}
 
-function setScenario(type){
-  const label = document.getElementById('dealLabel');
-  if(!label) return;
-  if(type === 'Cyber BFSI') {
-    label.textContent = 'Bank Cyber SI · POC Drift · Rep: Priya';
-  } else if(type === 'EdTech') {
-    label.textContent = 'Institutional EdTech · Evaluation Drift · Rep: Priya';
-  } else {
-    label.textContent = 'SR Manufacturing · AI Modernisation · Rep: Priya';
+/* ===================== OVERLAYS ===================== */
+const PLANNED={
+ history:{name:'Deal history',text:'ClearPipe will show your earlier reads on this deal, what you decided each time, and how each step went.'},
+ prep:{name:'Prep for a call',text:'ClearPipe will help you get ready for one call with one thing to find out, then ask you how it went.'},
+ winloss:{name:'Record a win or loss',text:'ClearPipe will ask how a deal ended and what mattered, so the next read is sharper.'},
+ share:{name:'Share a summary',text:'You will be able to send your manager a short snapshot that you preview first. Nothing is shared unless you press send.'}
+};
+function openPlanned(key){
+  const p=PLANNED[key];track('planned_option_opened',{option:key});
+  $('sheetBody').innerHTML=`<h2>${esc(p.name)}</h2><div class="sub">Planned. Not built yet.</div><p style="margin:0 0 6px">${esc(p.text)}</p><h3>Want it sooner?</h3>
+   <div class="feedback-options"><button type="button" onclick="plannedAnswer('${key}','Yes')">Yes, I would use it</button><button type="button" onclick="plannedAnswer('${key}','Not for me')">Not for me</button></div>
+   <div class="actions"><button type="button" class="btn primary" onclick="closeSheet()">Close</button></div>`;
+  $('sheetOverlay').hidden=false;
+}
+function plannedAnswer(key,a){
+  track('planned_option_answer',{option:key,answer:a});
+  $('sheetBody').innerHTML='<h2>Thanks</h2><div class="sub">That helps decide what is built next. Nothing else was shared.</div><div class="actions"><button type="button" class="btn primary" onclick="closeSheet()">Close</button></div>';
+}
+function closeSheet(){const o=$('sheetOverlay');if(o) o.hidden=true}
+function openPrivacy(){$('privacyOverlay').hidden=false}
+function closePrivacy(){const o=$('privacyOverlay');if(o) o.hidden=true}
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeSheet();closePrivacy()}});
+
+/* ===================== DEVELOPMENT PANEL ===================== */
+function devTap(name,a,btn){
+  track(name,{answer:a});
+  btn.parentElement.querySelectorAll('button').forEach(b=>b.setAttribute('aria-pressed',b===btn));
+}
+function devSend(name){
+  const f=$('dev_'+name);track(name,{text_length:f?f.value.trim().length:0});
+  if(f){f.value='';f.placeholder='Saved. Thank you.'}
+}
+function tapRow(name,q,opts){
+  return `<div class="tap-row"><div class="tap-q">${q}</div><div class="feedback-options">${opts.map(o=>`<button type="button" aria-pressed="false" onclick="devTap('${name}','${o}',this)">${o}</button>`).join('')}</div></div>`;
+}
+function savedHTML(){
+  const list=activeList().filter(k=>k<=n);
+  return '<b>Saved so far.</b> What the build stores, step by step, from the first session. Nothing is typed in again later.'+list.map(k=>`<div class="tap-row" ${k===n?'style="background:#eef5f0;border-radius:8px;padding:6px 8px"':''}><div class="tap-q">${esc(STEPS[k].label)}${k===n?' · this step':''}</div><ul class="devrules">${STEPS[k].rec.map(x=>`<li>${esc(x)}</li>`).join('')}</ul></div>`).join('');
+}
+function refreshDev(){
+  if(!DEV||!devKind) return;
+  if(devKind==='saved'||devKind==='log') devPreview(devKind);
+}
+function devPreview(kind){
+  devKind=kind;
+  const box=$('devPreview'); if(!box) return;
+  if(kind==='log'){
+    const rows=S.events.map(e=>{const {event,at,dealId,...rest}=e;return at.slice(11,19)+'  '+event+'  '+JSON.stringify(rest)});
+    box.innerHTML='<pre>'+esc(rows.length?rows.join('\n'):'No events yet. Walk through the conversation and they will appear here.')+'</pre>';return;
   }
+  if(kind==='saved'){box.innerHTML=savedHTML();return}
+  const views={
+    survey:`<b>Five-use survey.</b> Shown once, after a rep’s fifth use. All three questions optional.
+      ${tapRow('five_use_q1','How would you feel if you could no longer use ClearPipe?',['Very disappointed','Somewhat disappointed','Not disappointed'])}
+      <div class="tap-row"><div class="tap-q">Who else would you show it to?</div><textarea id="dev_five_use_q2" rows="2" style="width:100%"></textarea><button type="button" class="btn" onclick="devSend('five_use_q2')">Save</button></div>
+      <div class="tap-row"><div class="tap-q">What would you pay for it each month?</div><textarea id="dev_five_use_q3" rows="2" style="width:100%"></textarea><button type="button" class="btn" onclick="devSend('five_use_q3')">Save</button></div>`,
+    nudge:`<b>Ten-day nudge.</b> Sent once, if a rep has not returned ten days after their first deal.
+      <div class="tap-row"><div class="tap-q">You started a deal here and haven’t been back. What stopped you?</div><textarea id="dev_idle_nudge_reply" rows="3" style="width:100%"></textarea><button type="button" class="btn" onclick="devSend('idle_nudge_reply')">Send</button></div>`,
+    close:`<b>Deal close-out.</b> The two-tap version for release 1. Shown when the rep marks a deal ended. The fuller “Record a win or loss” stays greyed.
+      ${tapRow('deal_closed','How did this end?',['Won','Lost','Dropped','Paused'])}
+      ${tapRow('deal_close_matter','Did ClearPipe matter?',['Yes','A little','No'])}`,
+    email:`<b>Reminder emails.</b> Sent on the check-in day the rep chose. The link opens the deal at the check-in, with no login screen. Use a role or alias in the text, never a real company or person name.
+      <div class="tap-row"><div class="tap-q">Check-in reminder</div>Subject: Did you get to ask {{short action}}?<br>Hi {{name}}. Last week you planned to {{action}}. Tap below to tell ClearPipe how it went.<br><i>Button: Open ClearPipe (link to the check-in)</i></div>
+      <div class="tap-row"><div class="tap-q">Opt-in line (sign-up)</div>Send me reminder emails about my next steps from ClearPipe. I can stop them in Settings.</div>`,
+    planned:`<b>Planned options.</b> Greyed in release 1: Deal history, Prep for a call, Record a win or loss, Share a summary. A tap opens a short note and asks “Want it sooner?”. Log only the option name and the answer, never deal text.
+      <div class="tap-row"><div class="tap-q">Share a summary, when it is built</div>A snapshot, sent by the rep, per deal. It includes the rep’s own view by default, with an off switch. It never includes ClearPipe’s guesses about the buyer. Nothing is shared retroactively.</div>`
+  };
+  box.innerHTML=views[kind];
+}
+
+/* ===================== ACTIONS ===================== */
+function renderAll(){
+  const onHome=homeOpen||presentedStep(n).screen==='home';
+  $('repweb').hidden=onHome;$('mobtabs').hidden=onHome;$('homeView').hidden=!onHome;
+  if(onHome) renderHome();
+  renderStepbars();renderReplies();renderPicture();
+  $('btnDeals').hidden=n<1;
+  document.querySelectorAll('[data-share]').forEach(b=>b.hidden=n<5);
+  refreshDev();
+}
+async function advance(i){
+  if(busy||homeOpen) return;
+  const k=nextActive(n); if(k===null) return;
+  const idx=(i===undefined)?defaultIndex(k):i, r=STEPS[k].rep;
+  if(k===1) choice.voice=!!r.options[idx].voice;
+  if(k===6) choice.ret=idx;
+  if(k===9){S.C1.status='Done';S.C1.outcome='The buyer named Rohit and Friday'}
+  busy=true;n=k;closeSheet();renderAll();
+  if(presentedStep(k).screen!=='home') await animateStep(k); else await sleep(150);
+  if(!S.trackedSteps.has(k)){
+    if(k===1) track('session_started_by',{by:'self'});
+    if(k===6) track('session_started_by',{by:choice.ret===0?'reminder':'self'});
+    (STEP_EVENTS[k]||[]).forEach(ev=>track(ev,eventExtra(k,ev)));
+    S.trackedSteps.add(k);
+  }
+  busy=false;renderAll();scrollChat();
+}
+function back(){
+  if(busy) return;
+  const p=prevActive(n); if(p===null) return;
+  homeOpen=false;n=p;
+  if(n<6) choice.ret=0;
+  if(n<9){S.C1.status='Planned';S.C1.outcome=null}
+  closeSheet();renderChatStatic();renderAll();scrollChat();
+}
+function restart(){
+  if(busy) return;
+  n=0;homeOpen=false;choice.voice=false;choice.ret=0;S=freshState();
+  closeSheet();renderChatStatic();renderAll();scrollChat();
+  if(DEV&&devKind==='log') devPreview('log');
 }
 
 renderChatStatic();renderAll();
+if(DEV) devPreview('saved');
 </script>
-
-</body>
-</html>
+</body></html>
